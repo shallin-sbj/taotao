@@ -17,6 +17,7 @@
             <artifactId>taotao-manager-dao</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
+
         <!-- Mybatis -->
         <dependency>
             <groupId>org.mybatis</groupId>
