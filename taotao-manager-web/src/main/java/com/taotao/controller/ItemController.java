@@ -46,7 +46,15 @@ public class ItemController {
         System.out.println(result.getMsg() + ":" + result.getData());
         return result;
     }
+    @RequestMapping("/item/update")
+    @ResponseBody
+    public TaotaoResult modifyItem(TbItem item){
+        return TaotaoResult.ok();
+    }
 
-
-
+    @RequestMapping("/page/item-edit")
+    @ResponseBody
+    public TbItem quryItemById(Long id){
+        return null;
+    }
 }

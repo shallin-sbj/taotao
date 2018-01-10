@@ -65,4 +65,9 @@ public class ItemServiceImpl implements ItemService {
 
         return TaotaoResult.ok();
     }
+
+    @Override
+    public TaotaoResult modifyItem(TbItem item) {
+        return null;
+    }
 }

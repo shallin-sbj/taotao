@@ -1,6 +1,6 @@
 package com.taotao.service;
 
-import com.taotao.common.pojo.EasyUIDTreeNode;
+import com.taotao.common.pojo.EasyUITreeNode;
 
 import java.util.List;
 
@@ -16,5 +16,5 @@ public interface ItemCatService {
      * @param parentId
      * @return
      */
-    List<EasyUIDTreeNode> getItemCatList(long parentId);
+    List<EasyUITreeNode> getItemCatList(long parentId);
 }

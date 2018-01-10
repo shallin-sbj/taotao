@@ -28,4 +28,6 @@ public interface ItemService {
      * @添加商品
      */
     public TaotaoResult addItem(TbItem item,String desc);
+
+    TaotaoResult modifyItem(TbItem item);
 }

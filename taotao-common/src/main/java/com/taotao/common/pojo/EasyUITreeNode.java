@@ -6,7 +6,7 @@ import java.io.Serializable;
  * 商品类目存放的节点
  * @author sucl
  */
-public class EasyUIDTreeNode implements Serializable {
+public class EasyUITreeNode implements Serializable {
 
     // id
     private long id;
