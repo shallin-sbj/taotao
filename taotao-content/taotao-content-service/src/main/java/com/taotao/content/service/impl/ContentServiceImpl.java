@@ -5,13 +5,19 @@ import com.github.pagehelper.PageInfo;
 import com.taotao.common.pojo.EasyUIDataGridResult;
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.common.utlis.ExceptionUtil;
+import com.taotao.common.utlis.JsonUtils;
 import com.taotao.content.service.IContentService;
+import com.taotao.jedis.JedisClient;
 import com.taotao.mapper.TbContentMapper;
 import com.taotao.pojo.TbContent;
 import com.taotao.pojo.TbContentExample;
 import com.taotao.pojo.TbContentExample.Criteria;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import redis.clients.jedis.Jedis;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -22,6 +28,13 @@ public class ContentServiceImpl implements IContentService {
 
     @Autowired
     private TbContentMapper contentMapper;
+    @Autowired
+    private JedisClient jedisClient;
+    /**
+     * 首页内容key
+     */
+    @Value("${INDEX_CONTENT}")
+    private String INDEX_CONTENT;
 
     @Override
     public TaotaoResult addContent(TbContent content) {
@@ -83,10 +96,24 @@ public class ContentServiceImpl implements IContentService {
 
     @Override
     public List<TbContent> getContentByCid(Long contentId) {
+        try {
+            String contentStr = jedisClient.hget(INDEX_CONTENT, contentId.toString());
+            if (StringUtils.isNoneEmpty()) {
+                List<TbContent> contentList = JsonUtils.jsonToList(contentStr, TbContent.class);
+                return contentList;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         TbContentExample example = new TbContentExample();
         Criteria criteria = example.createCriteria();
         criteria.andCategoryIdEqualTo(contentId);
         List<TbContent> contents = contentMapper.selectByExample(example);
+        try {
+            jedisClient.hset(INDEX_CONTENT, contentId.toString(), JsonUtils.objectToJson(contents));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return contents;
     }
 }
