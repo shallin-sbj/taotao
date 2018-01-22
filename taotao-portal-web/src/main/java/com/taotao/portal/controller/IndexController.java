@@ -51,7 +51,6 @@ public class IndexController {
         // 把列表转换为Ad1Node列表
         List<AD1Node> ad1Nodes = new ArrayList<AD1Node>();
         // 把列表转换为json数据
-
         for (TbContent data:contentList ) {
             AD1Node  node = new AD1Node();
             node.setHeight(AD1_HEIGHT);

@@ -96,24 +96,24 @@ public class ContentServiceImpl implements IContentService {
 
     @Override
     public List<TbContent> getContentByCid(Long contentId) {
-        try {
-            String contentStr = jedisClient.hget(INDEX_CONTENT, contentId.toString());
-            if (StringUtils.isNoneEmpty()) {
-                List<TbContent> contentList = JsonUtils.jsonToList(contentStr, TbContent.class);
-                return contentList;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            String contentStr = jedisClient.hget(INDEX_CONTENT, contentId.toString());
+//            if (StringUtils.isNoneEmpty()) {
+//                List<TbContent> contentList = JsonUtils.jsonToList(contentStr, TbContent.class);
+//                return contentList;
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         TbContentExample example = new TbContentExample();
         Criteria criteria = example.createCriteria();
         criteria.andCategoryIdEqualTo(contentId);
         List<TbContent> contents = contentMapper.selectByExample(example);
-        try {
-            jedisClient.hset(INDEX_CONTENT, contentId.toString(), JsonUtils.objectToJson(contents));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            jedisClient.hset(INDEX_CONTENT, contentId.toString(), JsonUtils.objectToJson(contents));
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
         return contents;
     }
 }
