@@ -1,6 +1,5 @@
 package com.taotao.jedis;
 
-import org.junit.Test;
 import redis.clients.jedis.HostAndPort;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisCluster;
@@ -19,7 +18,7 @@ public class TestJedis {
      * @throws Exception
      */
 
-    @Test
+
     public void testjedis() throws Exception {
         //创建一个jedis对象，需要指定服务的ip和端口号
         Jedis jedis = new Jedis(URL, 6379);
@@ -31,11 +30,11 @@ public class TestJedis {
         jedis.close();
     }
 
-    @Test
+
     public void testJedisPool() throws Exception {
-        //创建一个数据库连接池对象（单例），需要指定服务的ip和端口号
+        //  创建一个数据库连接池对象（单例），需要指定服务的ip和端口号
         JedisPool jedisPool = new JedisPool(URL, 6379);
-        //从连接池中获得连接
+        //  从连接池中获得连接
         Jedis jedis = jedisPool.getResource();
         //使用Jedis操作数据库（方法级别使用）
         String result = jedis.get("jedis-key");
@@ -46,7 +45,6 @@ public class TestJedis {
         jedisPool.close();
     }
 
-    @Test
     public void testJedisCluster() throws Exception {
         Set<HostAndPort> nodes = new HashSet<>();
         nodes.add(new HostAndPort(URL, 7001));
@@ -60,7 +58,7 @@ public class TestJedis {
         System.out.println(cluster.get("key1"));
     }
 
-    @Test
+
     public void testJedisCluster2() throws Exception {
         //创建一个JedisCluster对象，构造参数Set类型，集合中每个元素是HostAndPort类型
         Set<HostAndPort> nodes = new HashSet<>();

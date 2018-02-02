@@ -25,6 +25,6 @@
     <!-- 引用dubbo服务 -->
     <dubbo:application name="taotao-search-web"/>
     <dubbo:registry protocol="zookeeper" address="120.79.130.20:2181"/>
-    <!--<dubbo:reference interface="com.taotao.content.service.IContentService" id="iContentService"/>-->
+    <dubbo:reference interface="com.taotao.search.service.SearchService" id="searchService"/>
 
 </beans>

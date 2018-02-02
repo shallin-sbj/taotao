@@ -42,5 +42,7 @@
     <!-- 内容服务 -->
     <dubbo:reference interface="com.taotao.content.service.IContentCategoryService" id="icontentCategoryService" />
     <dubbo:reference interface="com.taotao.content.service.IContentService" id="icontentService" />
+    <!-- solr 方法服务-->
+    <dubbo:reference interface="com.taotao.search.service.SearchItemService" id="SearchItemServiceImp" />
 
 </beans>

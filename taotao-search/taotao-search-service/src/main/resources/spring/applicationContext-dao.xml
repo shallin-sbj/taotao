@@ -27,8 +27,9 @@
 		<property name="configLocation" value="classpath:mybatis/SqlMapConfig.xml" />
 	</bean>
 	<!-- Mapper映射文件的包扫描器 -->
+	<!-- 扫描多个包 ，使用“，”分割 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.taotao.mapper" />
+		<property name="basePackage" value="com.taotao.mapper,com.taotao.search.mapper" />
 	</bean>
 	<!-- 加载日志配置文件 -->
 </beans>

@@ -8,7 +8,6 @@ import org.junit.Test;
  * FastDFS服务器测试
  */
 public class TestFastDFS {
-    @Test
     public void uploadFile() throws Exception{
         //1、向工程中添加jar包
         //2、创建一个配置文件。配置tracker服务器地址
@@ -32,7 +31,6 @@ public class TestFastDFS {
     /**
      * 测试工具类是否好用
      */
-    @Test
     public void testFastDfsClient() throws Exception {
         FastDFSClient fastDFSClient = new FastDFSClient("E:/CODE2/taotao/taotao-manager-web/src/main/resources/resource/client.conf");
         String string = fastDFSClient.uploadFile("C:/Users/sucl/Pictures/12.jpg");
