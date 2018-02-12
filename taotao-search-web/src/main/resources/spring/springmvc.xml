@@ -27,4 +27,7 @@
     <dubbo:registry protocol="zookeeper" address="120.79.130.20:2181"/>
     <dubbo:reference interface="com.taotao.search.service.SearchService" id="searchService"/>
 
+    <!-- 配置全局异常处理器-->
+    <bean class="com.taotao.search.controller.exception.GlobalExceptionReslover"></bean>
+
 </beans>
