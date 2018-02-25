@@ -5,16 +5,22 @@ import com.github.pagehelper.PageInfo;
 import com.taotao.common.pojo.EasyUIDataGridResult;
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.common.utlis.IDUtils;
+import com.taotao.common.utlis.JsonUtils;
+import com.taotao.jedis.JedisClient;
 import com.taotao.mapper.TbItemDescMapper;
 import com.taotao.mapper.TbItemMapper;
 import com.taotao.pojo.TbItem;
 import com.taotao.pojo.TbItemDesc;
 import com.taotao.pojo.TbItemExample;
 import com.taotao.service.ItemService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.MessageCreator;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import javax.annotation.Resource;
 import javax.jms.Destination;
@@ -30,6 +36,8 @@ import java.util.List;
 @Service
 public class ItemServiceImpl implements ItemService {
 
+   private final static Logger log = LoggerFactory.getLogger(ItemServiceImpl.class);
+
     @Autowired
     private TbItemMapper itemMapper;
     @Autowired
@@ -38,12 +46,40 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     private JmsTemplate jmsTemplate;
 
+    @Autowired
+    private JedisClient jedisClient;
+
     @Resource(name="itemAddtopic")
     private Destination destination;
 
+//    @Value("${ITEM_INFO_PRE")
+//    private String ITEM_INFO_PRE;    // 同步商品添加的搜索库中的时间
+
+    @Value("${TIEM_EXPIRE}")
+    private int ITEM_EXTPIRE;           // 设置缓存时间
+
     @Override
     public TbItem getItemById(Long itemId) {
-        return itemMapper.selectByPrimaryKey(itemId);
+        // 做缓存处理
+        log.info("============== getItemById id :" + itemId );
+        try {
+            String baseInfo = jedisClient.get(jedisClient.get(ITEM_EXTPIRE + ":" + itemId + ":BASE"));
+            if (StringUtils.hasText(baseInfo)) {
+                TbItem tbItem = JsonUtils.jsonToPojo(baseInfo, TbItem.class);
+                return tbItem;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        TbItem item = itemMapper.selectByPrimaryKey(itemId);
+        try {
+            jedisClient.set(ITEM_EXTPIRE + ":" + itemId + ":BASE", JsonUtils.objectToJson(item));
+            // 设置缓存时间，提高缓存利用率
+            jedisClient.expire(ITEM_EXTPIRE + ":" + item.getId() + ":BASE", ITEM_EXTPIRE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return item;
     }
 
     @Override
@@ -90,5 +126,29 @@ public class ItemServiceImpl implements ItemService {
     @Override
     public TaotaoResult modifyItem(TbItem item) {
         return null;
+    }
+
+    @Override
+    public TbItemDesc getItemDescById(long itemId) {
+        // 做缓存处理
+        try {
+            String baseInfo = jedisClient.get(jedisClient.get(ITEM_EXTPIRE + ":" + itemId + ":BASE"));
+            if (StringUtils.hasText(baseInfo)) {
+                TbItemDesc tbItemDesc = JsonUtils.jsonToPojo(baseInfo, TbItemDesc.class);
+                return  tbItemDesc;
+            }
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        TbItemDesc tbItemDesc = itemDescMapper.selectByPrimaryKey(itemId);
+        try {
+            jedisClient.set(ITEM_EXTPIRE + ":" + itemId + ":DESC", JsonUtils.objectToJson(tbItemDesc));
+            // 设置缓存时间，提高缓存利用率
+            jedisClient.expire(ITEM_EXTPIRE + ":" + itemId + ":DESC",ITEM_EXTPIRE);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tbItemDesc;
     }
 }

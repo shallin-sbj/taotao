@@ -3,6 +3,7 @@ package com.taotao.service;
 import com.taotao.common.pojo.EasyUIDataGridResult;
 import com.taotao.common.pojo.TaotaoResult;
 import com.taotao.pojo.TbItem;
+import com.taotao.pojo.TbItemDesc;
 
 /**
  *  @商品相关
@@ -30,4 +31,9 @@ public interface ItemService {
     public TaotaoResult addItem(TbItem item,String desc);
 
     TaotaoResult modifyItem(TbItem item);
+
+    /**
+     *  根据商品ID查询商品
+     */
+    TbItemDesc getItemDescById(long itemId);
 }
