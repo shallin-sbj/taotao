@@ -3,30 +3,93 @@
  * @author  Hooboy
  * @version 1.5 (2013/01/09)
  */
-(function($,h,c){var a=$([]),e=$.resize=$.extend($.resize,{}),i,k="setTimeout",j="resize",d=j+"-special-event",b="delay",f="throttleWindow";e[b]=250;e[f]=true;$.event.special[j]={setup:function(){if(!e[f]&&this[k]){return false}var l=$(this);a=a.add(l);$.data(this,d,{w:l.width(),h:l.height()});if(a.length===1){g()}},teardown:function(){if(!e[f]&&this[k]){return false}var l=$(this);a=a.not(l);l.removeData(d);if(!a.length){clearTimeout(i)}},add:function(l){if(!e[f]&&this[k]){return false}var n;function m(s,o,p){var q=$(this),r=$.data(this,d);r.w=o!==c?o:q.width();r.h=p!==c?p:q.height();n.apply(this,arguments)}if($.isFunction(l)){n=l;return m}else{n=l.handler;l.handler=m}}};function g(){i=h[k](function(){a.each(function(){var n=$(this),m=n.width(),l=n.height(),o=$.data(this,d);if(m!==o.w||l!==o.h){n.trigger(j,[o.w=m,o.h=l])}});g()},e[b])}})(jQuery,this);
+(function ($, h, c) {
+    var a = $([]), e = $.resize = $.extend($.resize, {}), i, k = "setTimeout", j = "resize", d = j + "-special-event",
+        b = "delay", f = "throttleWindow";
+    e[b] = 250;
+    e[f] = true;
+    $.event.special[j] = {
+        setup: function () {
+            if (!e[f] && this[k]) {
+                return false
+            }
+            var l = $(this);
+            a = a.add(l);
+            $.data(this, d, {w: l.width(), h: l.height()});
+            if (a.length === 1) {
+                g()
+            }
+        }, teardown: function () {
+            if (!e[f] && this[k]) {
+                return false
+            }
+            var l = $(this);
+            a = a.not(l);
+            l.removeData(d);
+            if (!a.length) {
+                clearTimeout(i)
+            }
+        }, add: function (l) {
+            if (!e[f] && this[k]) {
+                return false
+            }
+            var n;
 
-(function($){
-    if(/*@cc_on!@*/!1 && !window.XMLHttpRequest) {
-        $(function(){
-            try {document.execCommand("BackgroundImageCache", false, true);} catch(e){}
+            function m(s, o, p) {
+                var q = $(this), r = $.data(this, d);
+                r.w = o !== c ? o : q.width();
+                r.h = p !== c ? p : q.height();
+                n.apply(this, arguments)
+            }
+
+            if ($.isFunction(l)) {
+                n = l;
+                return m
+            } else {
+                n = l.handler;
+                l.handler = m
+            }
+        }
+    };
+
+    function g() {
+        i = h[k](function () {
+            a.each(function () {
+                var n = $(this), m = n.width(), l = n.height(), o = $.data(this, d);
+                if (m !== o.w || l !== o.h) {
+                    n.trigger(j, [o.w = m, o.h = l])
+                }
+            });
+            g()
+        }, e[b])
+    }
+})(jQuery, this);
+
+(function ($) {
+    if (/*@cc_on!@*/!1 && !window.XMLHttpRequest) {
+        $(function () {
+            try {
+                document.execCommand("BackgroundImageCache", false, true);
+            } catch (e) {
+            }
         });
     }
 
     $.extend({
-        getWS: function(){
+        getWS: function () {
             var doc = (document.compatMode && document.compatMode != "BackCompat") ? document.documentElement : document.body;
 
             return {
-                'x' : doc.scrollLeft ? doc.scrollLeft : (window.pageXOffset ? window.pageXOffset : 0),
-                'y' : doc.scrollTop ? doc.scrollTop : (window.pageYOffset ? window.pageYOffset : 0),
-                'viewW' : doc.clientWidth ? doc.clientWidth : self.innerWidth,
-                'viewH' : doc.clientHeight ? doc.clientHeight : self.innerHeight,
-                'width' : doc.scrollWidth ? doc.scrollWidth : window.width,
-                'height' : doc.scrollHeight ? doc.scrollHeight : window.height
+                'x': doc.scrollLeft ? doc.scrollLeft : (window.pageXOffset ? window.pageXOffset : 0),
+                'y': doc.scrollTop ? doc.scrollTop : (window.pageYOffset ? window.pageYOffset : 0),
+                'viewW': doc.clientWidth ? doc.clientWidth : self.innerWidth,
+                'viewH': doc.clientHeight ? doc.clientHeight : self.innerHeight,
+                'width': doc.scrollWidth ? doc.scrollWidth : window.width,
+                'height': doc.scrollHeight ? doc.scrollHeight : window.height
             };
         },
-        proxy: $.proxy || function(fn, context){
-            return function(){
+        proxy: $.proxy || function (fn, context) {
+            return function () {
                 fn.apply(context, arguments);
             };
         }
@@ -34,11 +97,11 @@
 })(jQuery);
 
 // Sticky Scroll
-(function($, sticky, window, undefined){
+(function ($, sticky, window, undefined) {
     var win = $(window),
         doc = $(document);
 
-    $[sticky] = function(data, options){
+    $[sticky] = function (data, options) {
         this.$el = $(data);
 
         this.element = data;
@@ -58,7 +121,7 @@
 
     $[sticky].prototype = {
         dom: {},
-        _init: function(data, options){
+        _init: function (data, options) {
 
             this.offset = this.$el.offset();
             this.distance = $.getWS().height - this.offset.top;
@@ -69,17 +132,17 @@
 
             s._create(data);
 
-            $(window).bind("scroll.sticky resize.sticky", function(){
+            $(window).bind("scroll.sticky resize.sticky", function () {
                 s.stickyed && s._start();
             });
 
             s.stickyed && s._start();
         },
-        _create: function(data){
+        _create: function (data) {
             var s = this;
 
-            if(!s.stickyed){
-                if(!this.$el.find(".sticky-placeholder").length){
+            if (!s.stickyed) {
+                if (!this.$el.find(".sticky-placeholder").length) {
                     s.dom.wrap = $('<div class="sticky-wrap"></div>');
                     s.dom.placeholder = $('<div class="sticky-placeholder hide"></div>');
                     $(data).wrapInner(s.dom.wrap);
@@ -88,37 +151,37 @@
                 }
             }
         },
-        _start: function(){
+        _start: function () {
             var s = this,
-                w  = $.getWS();
+                w = $.getWS();
 
-            if(s.offset.top > (w.y + w.viewH - 50) && s.offset.top > (w.y + w.viewH - s.distance) ){
+            if (s.offset.top > (w.y + w.viewH - 50) && s.offset.top > (w.y + w.viewH - s.distance)) {
                 s.scrollUp();
             } else {
                 s.scrollDown();
             }
         },
-        scrollDown: function(){
+        scrollDown: function () {
             var s = this;
 
-            s.$el.append( s.$el.find(".sticky-wrap") );
+            s.$el.append(s.$el.find(".sticky-wrap"));
             s.dom.placeholder.addClass("hide").css("display", "none");
         },
-        scrollUp: function(){
+        scrollUp: function () {
             var s = this;
 
-            s.dom.placeholder.append( s.$el.find(".sticky-wrap") );
+            s.dom.placeholder.append(s.$el.find(".sticky-wrap"));
             s.dom.placeholder.removeClass("hide").css("display", "block");
         },
-        refresh: function(){
-            if(!this.stickyed){
+        refresh: function () {
+            if (!this.stickyed) {
                 this.destory();
 
                 this._init(this.element, this.o);
             }
         },
-        destory: function(){
-            if(!this.stickyed){
+        destory: function () {
+            if (!this.stickyed) {
                 return;
             }
 
@@ -131,19 +194,19 @@
         }
     };
 
-    $.fn[sticky] = function(options){
+    $.fn[sticky] = function (options) {
         if (typeof options == 'string') {
             var args = Array.prototype.slice.call(arguments, 1),
                 method = options;
 
-            return this.each(function() {
+            return this.each(function () {
                 var instance = $(this).data(sticky);
 
-                if(!instance){
+                if (!instance) {
                     return; //调用插件方法时需要先实例化
                 }
 
-                if (!$.isFunction(instance[method]) || method.charAt(0) === "_"){
+                if (!$.isFunction(instance[method]) || method.charAt(0) === "_") {
                     return; //禁止调用不存在的API方法或者前缀为"_"的私有方法
                 }
 
@@ -151,9 +214,9 @@
             });
         }
 
-        return this.each(function(){
+        return this.each(function () {
             var instance = $(this).data(sticky);
-            if(!instance){
+            if (!instance) {
                 $(this).data(sticky, new $[sticky](this, options));
             }
         });
@@ -161,35 +224,35 @@
 })(jQuery, 'jSticky', window);
 
 
-var consigneeListOver = (function(){
+var consigneeListOver = (function () {
     var dom = $("#consignee-list");
 
     var timeout;
 
-    var init = function(){
+    var init = function () {
 
-        dom.find(".item").each(function(){
+        dom.find(".item").each(function () {
             var $this = $(this);
-            $this.data("lock", $this.find(".hookbox").attr("checked") );
+            $this.data("lock", $this.find(".hookbox").attr("checked"));
 
-            if( !!$this.data("lock") ){
+            if (!!$this.data("lock")) {
                 $this.find(".item-action").show().removeClass("hide");
             }
 
-            $this.bind("mouseenter", function(){
-                if(!$this.data("lock")){
+            $this.bind("mouseenter", function () {
+                if (!$this.data("lock")) {
                     $this.addClass("item-selected");
-                    timeout = setTimeout(function(){
+                    timeout = setTimeout(function () {
                         $this.find(".item-action").show().removeClass("hide");
                     }, 150);
                 }
-            }).bind("mouseleave", function(){
-                    if(!$this.data("lock")){
-                        clearTimeout(timeout);
-                        $this.removeClass("item-selected");
-                        $this.find(".item-action").hide().addClass("hide");
-                    }
-                });
+            }).bind("mouseleave", function () {
+                if (!$this.data("lock")) {
+                    clearTimeout(timeout);
+                    $this.removeClass("item-selected");
+                    $this.find(".item-action").hide().addClass("hide");
+                }
+            });
         });
     };
 
@@ -198,15 +261,17 @@ var consigneeListOver = (function(){
     };
 })();
 
-var expandingMore = (function(){
+var expandingMore = (function () {
     var expandHolder = $("#consignee-list"),
         expandHandle = $("#select-more"),
         item = expandHolder.find(".item-fore");
     expand = false;
 
-    var init = function(){
-        if(!item.length){return "";}
-        expandHandle.click(function(){
+    var init = function () {
+        if (!item.length) {
+            return "";
+        }
+        expandHandle.click(function () {
             expand = !expand;
 
             item[expand ? "removeClass" : "addClass"]("hide").css("display", expand ? "block" : "none");
@@ -214,7 +279,7 @@ var expandingMore = (function(){
 
             expandHandle.removeClass(expand ? "select-expand" : "select-collapse").addClass(expand ? "select-collapse" : "select-expand").find("span").html(expand ? "\u6536\u8D77" : "\u66F4\u591A\u5E38\u7528\u5730\u5740");
 
-            if(expand) {
+            if (expand) {
 
             } else {
 
@@ -228,24 +293,24 @@ var expandingMore = (function(){
 })();
 
 var itemListOver = {
-    init: function(selector){
+    init: function (selector) {
         this.dom = $(selector);
         this.timeout = null;
 
         this.bindEvents();
     },
-    bindEvents: function(){
+    bindEvents: function () {
         var self = this;
 
-        if( !this.dom.find(".item").length ){
+        if (!this.dom.find(".item").length) {
             return;
         }
 
-        this.dom.find(".item").each(function(){
+        this.dom.find(".item").each(function () {
             var $this = $(this);
 
-            $this.find(".hookbox").each(function(){
-                $(this).bind("click", function(){
+            $this.find(".hookbox").each(function () {
+                $(this).bind("click", function () {
                     $this.find(".hookbox").attr("checked", false);
 
                     self.dom.find(".item").removeClass("item-selected");
@@ -258,32 +323,32 @@ var itemListOver = {
                 });
             });
 
-            if( !!$this.find(".hookbox").attr("checked") ){
+            if (!!$this.find(".hookbox").attr("checked")) {
                 $this.addClass("item-selected");
                 $this.find(".item-action").show().removeClass("hide");
             }
 
-            $this.bind("mouseenter", function(){
-                if( !$this.find(".hookbox").attr("checked") ){
+            $this.bind("mouseenter", function () {
+                if (!$this.find(".hookbox").attr("checked")) {
                     $this.addClass("item-selected");
-                    self.timeout = setTimeout(function(){
+                    self.timeout = setTimeout(function () {
                         $this.find(".item-action").show().removeClass("hide");
                     }, 50);
                 }
-            }).bind("mouseleave", function(){
-                    if( !$this.find(".hookbox").attr("checked") ){
-                        clearTimeout(self.timeout);
-                        $this.removeClass("item-selected");
-                        $this.find(".item-action").hide().addClass("hide");
-                    }
-                });
+            }).bind("mouseleave", function () {
+                if (!$this.find(".hookbox").attr("checked")) {
+                    clearTimeout(self.timeout);
+                    $this.removeClass("item-selected");
+                    $this.find(".item-action").hide().addClass("hide");
+                }
+            });
         });
     }
 };
 
 // Expose Mask
-(function($){
-    var Expose = function(element, options) {
+(function ($) {
+    var Expose = function (element, options) {
         this.elem = $(element);
 
         this.defaults = {
@@ -307,10 +372,10 @@ var itemListOver = {
     };
 
     Expose.prototype = {
-        init: function(){
+        init: function () {
             var self = this;
 
-            if(!this.loaded) {
+            if (!this.loaded) {
 
                 this.loaded = true;
 
@@ -340,11 +405,11 @@ var itemListOver = {
                     "z-index": this.options.zIndex + 1
                 });
 
-                $(window).bind("resize.expose", $.proxy(function(){
+                $(window).bind("resize.expose", $.proxy(function () {
                     this._resize();
                 }, this));
 
-                this.elem.bind("resize", function(){
+                this.elem.bind("resize", function () {
                     self._resize();
                     self.options.onResize && self.options.onResize.apply(this, [self.elem]);
                 });
@@ -355,16 +420,16 @@ var itemListOver = {
             return this;
         },
 
-        open: function(){
-            if(!this.loaded){
+        open: function () {
+            if (!this.loaded) {
                 this.init();
                 this.options.onOpen && this.options.onOpen.apply(this, [this.elem]);
                 this.loaded = true;
             }
         },
 
-        close: function(){
-            if(this.loaded){
+        close: function () {
+            if (this.loaded) {
                 this.mask.css("display", "none");
 
                 this.destory();
@@ -380,8 +445,8 @@ var itemListOver = {
             }
         },
 
-        _resize: function(){
-            if(this.loaded){
+        _resize: function () {
+            if (this.loaded) {
                 this.mask.css("height", this.original_height + "px");
 
                 var size = $.getWS();
@@ -394,16 +459,16 @@ var itemListOver = {
             }
         },
 
-        update: function(){
+        update: function () {
             this._resize();
         },
 
-        reFresh: function(){
+        reFresh: function () {
             this.init();
         },
 
-        destory: function(){
-            if(this.loaded) {
+        destory: function () {
+            if (this.loaded) {
                 this.mask.remove();
                 this.elem.css({
                     "position": "static",
@@ -416,17 +481,17 @@ var itemListOver = {
         }
     };
 
-    $.jExpose = function(element, options){
+    $.jExpose = function (element, options) {
         $.jExpose.init(element, options);
     };
 
-    $.jExpose.init = function(element, options){
+    $.jExpose.init = function (element, options) {
         $.jExpose.view = $(element);
 
         $(element).data("jExpose", new Expose(element, options));
     };
 
-    $.jExpose.close = function() {
+    $.jExpose.close = function () {
         $.jExpose.view.data("jExpose").close();
 
         $.jExpose.view.data("jExpose", null);

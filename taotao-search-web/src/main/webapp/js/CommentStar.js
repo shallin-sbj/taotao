@@ -1,26 +1,27 @@
- /*
- myjd-2014 Compressed by uglify 
- Author:hanyuxinting 
- Date: 2014-11-18 
- */
-define(["./Base", "./Util"], function(a) {
+/*
+myjd-2014 Compressed by uglify
+Author:hanyuxinting
+Date: 2014-11-18
+*/
+define(["./Base", "./Util"], function (a) {
     var b = new a;
-    return b.include({star: 0,el: null,initStar: function(a, b) {
+    return b.include({
+        star: 0, el: null, initStar: function (a, b) {
             this.el = $(".commstar a", a);
             var c = this;
-            this.el.bind("click", function() {
+            this.el.bind("click", function () {
                 c.el.removeClass("active"), $(this).addClass("active"), c.star = this.getAttribute("_val"), b && b(c.star, $(this))
-            }).bind("mouseover", function() {
+            }).bind("mouseover", function () {
                 $(this).addClass("hover")
-            }).bind("mouseout", function() {
+            }).bind("mouseout", function () {
                 $(this).removeClass("hover")
             })
-        },_initStar: function(a) {
+        }, _initStar: function (a) {
             a = a;
             for (var b = 0, c = a.length; c > b; b++) {
                 this.init(a[b], this.resetStar)
             }
-        },resetStar: function(a, b) {
+        }, resetStar: function (a, b) {
             var c = a && parseInt(a[a.length - 1]), d = b.parent().parent();
             d.find("input").val(a);
             var e = d.find(".degree-text");
@@ -41,5 +42,6 @@ define(["./Base", "./Util"], function(a) {
                     e.addClass("d5 degree-text"), e.text("\u8d5e\u4e00\u4e2a")
             }
             e.show()
-        }}), b
+        }
+    }), b
 });

@@ -1,13 +1,567 @@
 if (!window.console) {
     window.console = {};
-    window.console.log = window.console.error = function() {
+    window.console.log = window.console.error = function () {
     }
 }
 if (!window.SEARCH) {
     window.SEARCH = {}
 }
-window.json_city = {"0": {"1": "北京","2": "上海","3": "天津","4": "重庆","5": "河北","6": "山西","7": "河南","8": "辽宁","9": "吉林","10": "黑龙江","11": "内蒙古","12": "江苏","13": "山东","14": "安徽","15": "浙江","16": "福建","17": "湖北","18": "湖南","19": "广东","20": "广西","21": "江西","22": "四川","23": "海南","24": "贵州","25": "云南","26": "西藏","27": "陕西","28": "甘肃","29": "青海","30": "宁夏","31": "新疆","32": "台湾","42": "香港","43": "澳门","84": "钓鱼岛"},"1": {"72": "朝阳区","2800": "海淀区","2801": "西城区","2802": "东城区","2803": "崇文区","2804": "宣武区","2805": "丰台区","2806": "石景山区","2807": "门头沟","2808": "房山区","2809": "通州区","2810": "大兴区","2812": "顺义区","2814": "怀柔区","2816": "密云区","2901": "昌平区","2953": "平谷区","3065": "延庆县"},"2": {"2813": "徐汇区","2815": "长宁区","2817": "静安区","2820": "闸北区","2822": "虹口区","2823": "杨浦区","2824": "宝山区","2825": "闵行区","2826": "嘉定区","2830": "浦东新区","2833": "青浦区","2834": "松江区","2835": "金山区","2836": "南汇区","2837": "奉贤区","2841": "普陀区","2919": "崇明县","78": "黄浦区"},"3": {"51035": "东丽区","51036": "和平区","51037": "河北区","51038": "河东区","51039": "河西区","51040": "红桥区","51041": "蓟县","51042": "静海县","51043": "南开区","51044": "塘沽区","51045": "西青区","51046": "武清区","51047": "津南区","51048": "汉沽区","51049": "大港区","51050": "北辰区","51051": "宝坻区","51052": "宁河县"},"4": {"113": "万州区","114": "涪陵区","115": "梁平县","119": "南川区","123": "潼南县","126": "大足区","128": "黔江区","129": "武隆县","130": "丰都县","131": "奉节县","132": "开县","133": "云阳县","134": "忠县","135": "巫溪县","136": "巫山县","137": "石柱县","138": "彭水县","139": "垫江县","140": "酉阳县","141": "秀山县","48131": "璧山县","48132": "荣昌县","48133": "铜梁县","48201": "合川区","48202": "巴南区","48203": "北碚区","48204": "江津区","48205": "渝北区","48206": "长寿区","48207": "永川区","50950": "江北区","50951": "南岸区","50952": "九龙坡区","50953": "沙坪坝区","50954": "大渡口区","50995": "綦江区","51026": "渝中区","51027": "高新区","51028": "北部新区","4164": "城口县","3076": "高新区"},"5": {"142": "石家庄市","148": "邯郸市","164": "邢台市","199": "保定市","224": "张家口市","239": "承德市","248": "秦皇岛市","258": "唐山市","264": "沧州市","274": "廊坊市","275": "衡水市"},"6": {"303": "太原市","309": "大同市","318": "阳泉市","325": "晋城市","330": "朔州市","336": "晋中市","350": "忻州市","368": "吕梁市","379": "临汾市","398": "运城市","3074": "长治市"},"7": {"412": "郑州市","420": "开封市","427": "洛阳市","438": "平顶山市","446": "焦作市","454": "鹤壁市","458": "新乡市","468": "安阳市","475": "濮阳市","482": "许昌市","489": "漯河市","495": "三门峡市","502": "南阳市","517": "商丘市","527": "周口市","538": "驻马店市","549": "信阳市","2780": "济源市"},"8": {"560": "沈阳市","573": "大连市","579": "鞍山市","584": "抚顺市","589": "本溪市","593": "丹东市","598": "锦州市","604": "葫芦岛市","609": "营口市","613": "盘锦市","617": "阜新市","621": "辽阳市","632": "朝阳市","6858": "铁岭市"},"9": {"639": "长春市","644": "吉林市","651": "四平市","2992": "辽源市","657": "通化市","664": "白山市","674": "松原市","681": "白城市","687": "延边州"},"10": {"727": "鹤岗市","731": "双鸭山市","737": "鸡西市","742": "大庆市","753": "伊春市","757": "牡丹江市","765": "佳木斯市","773": "七台河市","776": "黑河市","782": "绥化市","793": "大兴安岭地区","698": "哈尔滨市","712": "齐齐哈尔市"},"11": {"799": "呼和浩特市","805": "包头市","810": "乌海市","812": "赤峰市","823": "乌兰察布市","835": "锡林郭勒盟","848": "呼伦贝尔市","870": "鄂尔多斯市","880": "巴彦淖尔市","891": "阿拉善盟","895": "兴安盟","902": "通辽市"},"12": {"904": "南京市","911": "徐州市","919": "连云港市","925": "淮安市","933": "宿迁市","939": "盐城市","951": "扬州市","959": "泰州市","965": "南通市","972": "镇江市","978": "常州市","984": "无锡市","988": "苏州市"},"13": {"2900": "济宁市","1000": "济南市","1007": "青岛市","1016": "淄博市","1022": "枣庄市","1025": "东营市","1032": "潍坊市","1042": "烟台市","1053": "威海市","1058": "莱芜市","1060": "德州市","1072": "临沂市","1081": "聊城市","1090": "滨州市","1099": "菏泽市","1108": "日照市","1112": "泰安市"},"14": {"1151": "黄山市","1159": "滁州市","1167": "阜阳市","1174": "亳州市","1180": "宿州市","1201": "池州市","1206": "六安市","2971": "宣城市","1114": "铜陵市","1116": "合肥市","1121": "淮南市","1124": "淮北市","1127": "芜湖市","1132": "蚌埠市","1137": "马鞍山市","1140": "安庆市"},"15": {"1158": "宁波市","1273": "衢州市","1280": "丽水市","1290": "台州市","1298": "舟山市","1213": "杭州市","1233": "温州市","1243": "嘉兴市","1250": "湖州市","1255": "绍兴市","1262": "金华市"},"16": {"1303": "福州市","1315": "厦门市","1317": "三明市","1329": "莆田市","1332": "泉州市","1341": "漳州市","1352": "南平市","1362": "龙岩市","1370": "宁德市"},"17": {"1432": "孝感市","1441": "黄冈市","1458": "咸宁市","1466": "恩施州","1475": "鄂州市","1477": "荆门市","1479": "随州市","3154": "神农架林区","1381": "武汉市","1387": "黄石市","1396": "襄阳市","1405": "十堰市","1413": "荆州市","1421": "宜昌市","2922": "潜江市","2980": "天门市","2983": "仙桃市"},"18": {"4250": "耒阳市","1482": "长沙市","1488": "株洲市","1495": "湘潭市","1499": "韶山市","1501": "衡阳市","1511": "邵阳市","1522": "岳阳市","1530": "常德市","1540": "张家界市","1544": "郴州市","1555": "益阳市","1560": "永州市","1574": "怀化市","1586": "娄底市","1592": "湘西州"},"19": {"1601": "广州市","1607": "深圳市","1609": "珠海市","1611": "汕头市","1617": "韶关市","1627": "河源市","1634": "梅州市","1709": "揭阳市","1643": "惠州市","1650": "汕尾市","1655": "东莞市","1657": "中山市","1659": "江门市","1666": "佛山市","1672": "阳江市","1677": "湛江市","1684": "茂名市","1690": "肇庆市","1698": "云浮市","1704": "清远市","1705": "潮州市"},"20": {"3168": "崇左市","1715": "南宁市","1720": "柳州市","1726": "桂林市","1740": "梧州市","1746": "北海市","1749": "防城港市","1753": "钦州市","1757": "贵港市","1761": "玉林市","1792": "贺州市","1806": "百色市","1818": "河池市","3044": "来宾市"},"21": {"1827": "南昌市","1832": "景德镇市","1836": "萍乡市","1842": "新余市","1845": "九江市","1857": "鹰潭市","1861": "上饶市","1874": "宜春市","1885": "抚州市","1898": "吉安市","1911": "赣州市"},"22": {"2103": "凉山州","1930": "成都市","1946": "自贡市","1950": "攀枝花市","1954": "泸州市","1960": "绵阳市","1962": "德阳市","1977": "广元市","1983": "遂宁市","1988": "内江市","1993": "乐山市","2005": "宜宾市","2016": "广安市","2022": "南充市","2033": "达州市","2042": "巴中市","2047": "雅安市","2058": "眉山市","2065": "资阳市","2070": "阿坝州","2084": "甘孜州"},"23": {"3690": "三亚市","3698": "文昌市","3699": "五指山市","3701": "临高县","3702": "澄迈县","3703": "定安县","3704": "屯昌县","3705": "昌江县","3706": "白沙县","3707": "琼中县","3708": "陵水县","3709": "保亭县","3710": "乐东县","3711": "三沙市","2121": "海口市","3115": "琼海市","3137": "万宁市","3173": "东方市","3034": "儋州市"},"24": {"2144": "贵阳市","2150": "六盘水市","2155": "遵义市","2169": "铜仁市","2180": "毕节市","2189": "安顺市","2196": "黔西南州","2205": "黔东南州","2222": "黔南州"},"25": {"4108": "迪庆州","2235": "昆明市","2247": "曲靖市","2258": "玉溪市","2270": "昭通市","2281": "普洱市","2291": "临沧市","2298": "保山市","2304": "丽江市","2309": "文山州","2318": "红河州","2332": "西双版纳州","2336": "楚雄州","2347": "大理州","2360": "德宏州","2366": "怒江州"},"26": {"3970": "阿里地区","3971": "林芝地区","2951": "拉萨市","3107": "那曲地区","3129": "山南地区","3138": "昌都地区","3144": "日喀则地区"},"27": {"2428": "延安市","2442": "汉中市","2454": "榆林市","2468": "商洛市","2476": "安康市","2376": "西安市","2386": "铜川市","2390": "宝鸡市","2402": "咸阳市","2416": "渭南市"},"28": {"2525": "庆阳市","2534": "陇南市","2544": "武威市","2549": "张掖市","2556": "酒泉市","2564": "甘南州","2573": "临夏州","3080": "定西市","2487": "兰州市","2492": "金昌市","2495": "白银市","2501": "天水市","2509": "嘉峪关市","2518": "平凉市"},"29": {"2580": "西宁市","2585": "海东地区","2592": "海北州","2597": "黄南州","2603": "海南州","2605": "果洛州","2612": "玉树州","2620": "海西州"},"30": {"2628": "银川市","2632": "石嘴山市","2637": "吴忠市","2644": "固原市","3071": "中卫市"},"31": {"4110": "五家渠市","4163": "博尔塔拉蒙古自治州阿拉山口口岸","15945": "阿拉尔市","15946": "图木舒克市","2652": "乌鲁木齐市","2654": "克拉玛依市","2656": "石河子市","2658": "吐鲁番地区","2662": "哈密地区","2666": "和田地区","2675": "阿克苏地区","2686": "喀什地区","2699": "克孜勒苏州","2704": "巴音郭楞州","2714": "昌吉州","2723": "博尔塔拉州","2727": "伊犁州","2736": "塔城地区","2744": "阿勒泰地区"},"32": {"2768": "台湾市"},"42": {"2754": "香港特别行政区"},"43": {"2770": "澳门市"},"84": {"1310": "钓鱼岛"}};
-Array.prototype.unique = function() {
+window.json_city = {
+    "0": {
+        "1": "北京",
+        "2": "上海",
+        "3": "天津",
+        "4": "重庆",
+        "5": "河北",
+        "6": "山西",
+        "7": "河南",
+        "8": "辽宁",
+        "9": "吉林",
+        "10": "黑龙江",
+        "11": "内蒙古",
+        "12": "江苏",
+        "13": "山东",
+        "14": "安徽",
+        "15": "浙江",
+        "16": "福建",
+        "17": "湖北",
+        "18": "湖南",
+        "19": "广东",
+        "20": "广西",
+        "21": "江西",
+        "22": "四川",
+        "23": "海南",
+        "24": "贵州",
+        "25": "云南",
+        "26": "西藏",
+        "27": "陕西",
+        "28": "甘肃",
+        "29": "青海",
+        "30": "宁夏",
+        "31": "新疆",
+        "32": "台湾",
+        "42": "香港",
+        "43": "澳门",
+        "84": "钓鱼岛"
+    },
+    "1": {
+        "72": "朝阳区",
+        "2800": "海淀区",
+        "2801": "西城区",
+        "2802": "东城区",
+        "2803": "崇文区",
+        "2804": "宣武区",
+        "2805": "丰台区",
+        "2806": "石景山区",
+        "2807": "门头沟",
+        "2808": "房山区",
+        "2809": "通州区",
+        "2810": "大兴区",
+        "2812": "顺义区",
+        "2814": "怀柔区",
+        "2816": "密云区",
+        "2901": "昌平区",
+        "2953": "平谷区",
+        "3065": "延庆县"
+    },
+    "2": {
+        "2813": "徐汇区",
+        "2815": "长宁区",
+        "2817": "静安区",
+        "2820": "闸北区",
+        "2822": "虹口区",
+        "2823": "杨浦区",
+        "2824": "宝山区",
+        "2825": "闵行区",
+        "2826": "嘉定区",
+        "2830": "浦东新区",
+        "2833": "青浦区",
+        "2834": "松江区",
+        "2835": "金山区",
+        "2836": "南汇区",
+        "2837": "奉贤区",
+        "2841": "普陀区",
+        "2919": "崇明县",
+        "78": "黄浦区"
+    },
+    "3": {
+        "51035": "东丽区",
+        "51036": "和平区",
+        "51037": "河北区",
+        "51038": "河东区",
+        "51039": "河西区",
+        "51040": "红桥区",
+        "51041": "蓟县",
+        "51042": "静海县",
+        "51043": "南开区",
+        "51044": "塘沽区",
+        "51045": "西青区",
+        "51046": "武清区",
+        "51047": "津南区",
+        "51048": "汉沽区",
+        "51049": "大港区",
+        "51050": "北辰区",
+        "51051": "宝坻区",
+        "51052": "宁河县"
+    },
+    "4": {
+        "113": "万州区",
+        "114": "涪陵区",
+        "115": "梁平县",
+        "119": "南川区",
+        "123": "潼南县",
+        "126": "大足区",
+        "128": "黔江区",
+        "129": "武隆县",
+        "130": "丰都县",
+        "131": "奉节县",
+        "132": "开县",
+        "133": "云阳县",
+        "134": "忠县",
+        "135": "巫溪县",
+        "136": "巫山县",
+        "137": "石柱县",
+        "138": "彭水县",
+        "139": "垫江县",
+        "140": "酉阳县",
+        "141": "秀山县",
+        "48131": "璧山县",
+        "48132": "荣昌县",
+        "48133": "铜梁县",
+        "48201": "合川区",
+        "48202": "巴南区",
+        "48203": "北碚区",
+        "48204": "江津区",
+        "48205": "渝北区",
+        "48206": "长寿区",
+        "48207": "永川区",
+        "50950": "江北区",
+        "50951": "南岸区",
+        "50952": "九龙坡区",
+        "50953": "沙坪坝区",
+        "50954": "大渡口区",
+        "50995": "綦江区",
+        "51026": "渝中区",
+        "51027": "高新区",
+        "51028": "北部新区",
+        "4164": "城口县",
+        "3076": "高新区"
+    },
+    "5": {
+        "142": "石家庄市",
+        "148": "邯郸市",
+        "164": "邢台市",
+        "199": "保定市",
+        "224": "张家口市",
+        "239": "承德市",
+        "248": "秦皇岛市",
+        "258": "唐山市",
+        "264": "沧州市",
+        "274": "廊坊市",
+        "275": "衡水市"
+    },
+    "6": {
+        "303": "太原市",
+        "309": "大同市",
+        "318": "阳泉市",
+        "325": "晋城市",
+        "330": "朔州市",
+        "336": "晋中市",
+        "350": "忻州市",
+        "368": "吕梁市",
+        "379": "临汾市",
+        "398": "运城市",
+        "3074": "长治市"
+    },
+    "7": {
+        "412": "郑州市",
+        "420": "开封市",
+        "427": "洛阳市",
+        "438": "平顶山市",
+        "446": "焦作市",
+        "454": "鹤壁市",
+        "458": "新乡市",
+        "468": "安阳市",
+        "475": "濮阳市",
+        "482": "许昌市",
+        "489": "漯河市",
+        "495": "三门峡市",
+        "502": "南阳市",
+        "517": "商丘市",
+        "527": "周口市",
+        "538": "驻马店市",
+        "549": "信阳市",
+        "2780": "济源市"
+    },
+    "8": {
+        "560": "沈阳市",
+        "573": "大连市",
+        "579": "鞍山市",
+        "584": "抚顺市",
+        "589": "本溪市",
+        "593": "丹东市",
+        "598": "锦州市",
+        "604": "葫芦岛市",
+        "609": "营口市",
+        "613": "盘锦市",
+        "617": "阜新市",
+        "621": "辽阳市",
+        "632": "朝阳市",
+        "6858": "铁岭市"
+    },
+    "9": {
+        "639": "长春市",
+        "644": "吉林市",
+        "651": "四平市",
+        "2992": "辽源市",
+        "657": "通化市",
+        "664": "白山市",
+        "674": "松原市",
+        "681": "白城市",
+        "687": "延边州"
+    },
+    "10": {
+        "727": "鹤岗市",
+        "731": "双鸭山市",
+        "737": "鸡西市",
+        "742": "大庆市",
+        "753": "伊春市",
+        "757": "牡丹江市",
+        "765": "佳木斯市",
+        "773": "七台河市",
+        "776": "黑河市",
+        "782": "绥化市",
+        "793": "大兴安岭地区",
+        "698": "哈尔滨市",
+        "712": "齐齐哈尔市"
+    },
+    "11": {
+        "799": "呼和浩特市",
+        "805": "包头市",
+        "810": "乌海市",
+        "812": "赤峰市",
+        "823": "乌兰察布市",
+        "835": "锡林郭勒盟",
+        "848": "呼伦贝尔市",
+        "870": "鄂尔多斯市",
+        "880": "巴彦淖尔市",
+        "891": "阿拉善盟",
+        "895": "兴安盟",
+        "902": "通辽市"
+    },
+    "12": {
+        "904": "南京市",
+        "911": "徐州市",
+        "919": "连云港市",
+        "925": "淮安市",
+        "933": "宿迁市",
+        "939": "盐城市",
+        "951": "扬州市",
+        "959": "泰州市",
+        "965": "南通市",
+        "972": "镇江市",
+        "978": "常州市",
+        "984": "无锡市",
+        "988": "苏州市"
+    },
+    "13": {
+        "2900": "济宁市",
+        "1000": "济南市",
+        "1007": "青岛市",
+        "1016": "淄博市",
+        "1022": "枣庄市",
+        "1025": "东营市",
+        "1032": "潍坊市",
+        "1042": "烟台市",
+        "1053": "威海市",
+        "1058": "莱芜市",
+        "1060": "德州市",
+        "1072": "临沂市",
+        "1081": "聊城市",
+        "1090": "滨州市",
+        "1099": "菏泽市",
+        "1108": "日照市",
+        "1112": "泰安市"
+    },
+    "14": {
+        "1151": "黄山市",
+        "1159": "滁州市",
+        "1167": "阜阳市",
+        "1174": "亳州市",
+        "1180": "宿州市",
+        "1201": "池州市",
+        "1206": "六安市",
+        "2971": "宣城市",
+        "1114": "铜陵市",
+        "1116": "合肥市",
+        "1121": "淮南市",
+        "1124": "淮北市",
+        "1127": "芜湖市",
+        "1132": "蚌埠市",
+        "1137": "马鞍山市",
+        "1140": "安庆市"
+    },
+    "15": {
+        "1158": "宁波市",
+        "1273": "衢州市",
+        "1280": "丽水市",
+        "1290": "台州市",
+        "1298": "舟山市",
+        "1213": "杭州市",
+        "1233": "温州市",
+        "1243": "嘉兴市",
+        "1250": "湖州市",
+        "1255": "绍兴市",
+        "1262": "金华市"
+    },
+    "16": {
+        "1303": "福州市",
+        "1315": "厦门市",
+        "1317": "三明市",
+        "1329": "莆田市",
+        "1332": "泉州市",
+        "1341": "漳州市",
+        "1352": "南平市",
+        "1362": "龙岩市",
+        "1370": "宁德市"
+    },
+    "17": {
+        "1432": "孝感市",
+        "1441": "黄冈市",
+        "1458": "咸宁市",
+        "1466": "恩施州",
+        "1475": "鄂州市",
+        "1477": "荆门市",
+        "1479": "随州市",
+        "3154": "神农架林区",
+        "1381": "武汉市",
+        "1387": "黄石市",
+        "1396": "襄阳市",
+        "1405": "十堰市",
+        "1413": "荆州市",
+        "1421": "宜昌市",
+        "2922": "潜江市",
+        "2980": "天门市",
+        "2983": "仙桃市"
+    },
+    "18": {
+        "4250": "耒阳市",
+        "1482": "长沙市",
+        "1488": "株洲市",
+        "1495": "湘潭市",
+        "1499": "韶山市",
+        "1501": "衡阳市",
+        "1511": "邵阳市",
+        "1522": "岳阳市",
+        "1530": "常德市",
+        "1540": "张家界市",
+        "1544": "郴州市",
+        "1555": "益阳市",
+        "1560": "永州市",
+        "1574": "怀化市",
+        "1586": "娄底市",
+        "1592": "湘西州"
+    },
+    "19": {
+        "1601": "广州市",
+        "1607": "深圳市",
+        "1609": "珠海市",
+        "1611": "汕头市",
+        "1617": "韶关市",
+        "1627": "河源市",
+        "1634": "梅州市",
+        "1709": "揭阳市",
+        "1643": "惠州市",
+        "1650": "汕尾市",
+        "1655": "东莞市",
+        "1657": "中山市",
+        "1659": "江门市",
+        "1666": "佛山市",
+        "1672": "阳江市",
+        "1677": "湛江市",
+        "1684": "茂名市",
+        "1690": "肇庆市",
+        "1698": "云浮市",
+        "1704": "清远市",
+        "1705": "潮州市"
+    },
+    "20": {
+        "3168": "崇左市",
+        "1715": "南宁市",
+        "1720": "柳州市",
+        "1726": "桂林市",
+        "1740": "梧州市",
+        "1746": "北海市",
+        "1749": "防城港市",
+        "1753": "钦州市",
+        "1757": "贵港市",
+        "1761": "玉林市",
+        "1792": "贺州市",
+        "1806": "百色市",
+        "1818": "河池市",
+        "3044": "来宾市"
+    },
+    "21": {
+        "1827": "南昌市",
+        "1832": "景德镇市",
+        "1836": "萍乡市",
+        "1842": "新余市",
+        "1845": "九江市",
+        "1857": "鹰潭市",
+        "1861": "上饶市",
+        "1874": "宜春市",
+        "1885": "抚州市",
+        "1898": "吉安市",
+        "1911": "赣州市"
+    },
+    "22": {
+        "2103": "凉山州",
+        "1930": "成都市",
+        "1946": "自贡市",
+        "1950": "攀枝花市",
+        "1954": "泸州市",
+        "1960": "绵阳市",
+        "1962": "德阳市",
+        "1977": "广元市",
+        "1983": "遂宁市",
+        "1988": "内江市",
+        "1993": "乐山市",
+        "2005": "宜宾市",
+        "2016": "广安市",
+        "2022": "南充市",
+        "2033": "达州市",
+        "2042": "巴中市",
+        "2047": "雅安市",
+        "2058": "眉山市",
+        "2065": "资阳市",
+        "2070": "阿坝州",
+        "2084": "甘孜州"
+    },
+    "23": {
+        "3690": "三亚市",
+        "3698": "文昌市",
+        "3699": "五指山市",
+        "3701": "临高县",
+        "3702": "澄迈县",
+        "3703": "定安县",
+        "3704": "屯昌县",
+        "3705": "昌江县",
+        "3706": "白沙县",
+        "3707": "琼中县",
+        "3708": "陵水县",
+        "3709": "保亭县",
+        "3710": "乐东县",
+        "3711": "三沙市",
+        "2121": "海口市",
+        "3115": "琼海市",
+        "3137": "万宁市",
+        "3173": "东方市",
+        "3034": "儋州市"
+    },
+    "24": {
+        "2144": "贵阳市",
+        "2150": "六盘水市",
+        "2155": "遵义市",
+        "2169": "铜仁市",
+        "2180": "毕节市",
+        "2189": "安顺市",
+        "2196": "黔西南州",
+        "2205": "黔东南州",
+        "2222": "黔南州"
+    },
+    "25": {
+        "4108": "迪庆州",
+        "2235": "昆明市",
+        "2247": "曲靖市",
+        "2258": "玉溪市",
+        "2270": "昭通市",
+        "2281": "普洱市",
+        "2291": "临沧市",
+        "2298": "保山市",
+        "2304": "丽江市",
+        "2309": "文山州",
+        "2318": "红河州",
+        "2332": "西双版纳州",
+        "2336": "楚雄州",
+        "2347": "大理州",
+        "2360": "德宏州",
+        "2366": "怒江州"
+    },
+    "26": {
+        "3970": "阿里地区",
+        "3971": "林芝地区",
+        "2951": "拉萨市",
+        "3107": "那曲地区",
+        "3129": "山南地区",
+        "3138": "昌都地区",
+        "3144": "日喀则地区"
+    },
+    "27": {
+        "2428": "延安市",
+        "2442": "汉中市",
+        "2454": "榆林市",
+        "2468": "商洛市",
+        "2476": "安康市",
+        "2376": "西安市",
+        "2386": "铜川市",
+        "2390": "宝鸡市",
+        "2402": "咸阳市",
+        "2416": "渭南市"
+    },
+    "28": {
+        "2525": "庆阳市",
+        "2534": "陇南市",
+        "2544": "武威市",
+        "2549": "张掖市",
+        "2556": "酒泉市",
+        "2564": "甘南州",
+        "2573": "临夏州",
+        "3080": "定西市",
+        "2487": "兰州市",
+        "2492": "金昌市",
+        "2495": "白银市",
+        "2501": "天水市",
+        "2509": "嘉峪关市",
+        "2518": "平凉市"
+    },
+    "29": {
+        "2580": "西宁市",
+        "2585": "海东地区",
+        "2592": "海北州",
+        "2597": "黄南州",
+        "2603": "海南州",
+        "2605": "果洛州",
+        "2612": "玉树州",
+        "2620": "海西州"
+    },
+    "30": {"2628": "银川市", "2632": "石嘴山市", "2637": "吴忠市", "2644": "固原市", "3071": "中卫市"},
+    "31": {
+        "4110": "五家渠市",
+        "4163": "博尔塔拉蒙古自治州阿拉山口口岸",
+        "15945": "阿拉尔市",
+        "15946": "图木舒克市",
+        "2652": "乌鲁木齐市",
+        "2654": "克拉玛依市",
+        "2656": "石河子市",
+        "2658": "吐鲁番地区",
+        "2662": "哈密地区",
+        "2666": "和田地区",
+        "2675": "阿克苏地区",
+        "2686": "喀什地区",
+        "2699": "克孜勒苏州",
+        "2704": "巴音郭楞州",
+        "2714": "昌吉州",
+        "2723": "博尔塔拉州",
+        "2727": "伊犁州",
+        "2736": "塔城地区",
+        "2744": "阿勒泰地区"
+    },
+    "32": {"2768": "台湾市"},
+    "42": {"2754": "香港特别行政区"},
+    "43": {"2770": "澳门市"},
+    "84": {"1310": "钓鱼岛"}
+};
+Array.prototype.unique = function () {
     var d = [], c = {};
     for (var b = 0, a = this.length; b < a; b++) {
         if (!c[this[b]]) {
@@ -17,24 +571,25 @@ Array.prototype.unique = function() {
     }
     return d
 };
-SEARCH.util = {htmlspecialchars: function(a, b) {
+SEARCH.util = {
+    htmlspecialchars: function (a, b) {
         a = a.replace("<", "&lt;").replace(">", "&gt;").replace("&", "&amp;").replace('"', "&quot;");
         return b == true ? a.replace("'", "&#0*39;") : a
-    },html_chars_decode: function(a) {
+    }, html_chars_decode: function (a) {
         return !a ? "" : a.replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#0*39;/g, "'")
-    },strip_tags: function(a, c) {
+    }, strip_tags: function (a, c) {
         c = (((c || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join("");
         var b = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi, d = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
-        return a.replace(d, "").replace(b, function(f, e) {
+        return a.replace(d, "").replace(b, function (f, e) {
             return c.indexOf("<" + e.toLowerCase() + ">") > -1 ? f : ""
         })
-    },getQueryString: function(b, a) {
+    }, getQueryString: function (b, a) {
         var c = new RegExp("(^|\\?|&)" + b + "=([^&]*)(\\s|&|$)", "i"), d = a ? a : window.location.search;
         if (c.test(d)) {
             return RegExp.$2
         }
         return ""
-    },filtUrl: function(l, k, j) {
+    }, filtUrl: function (l, k, j) {
         var d, g, f;
         switch (arguments.length) {
             case 0:
@@ -72,7 +627,7 @@ SEARCH.util = {htmlspecialchars: function(a, b) {
                 return d + "&" + g + "=" + f + h
             }
         }
-    },get_ware_type: function(b) {
+    }, get_ware_type: function (b) {
         var a = "general";
         switch (Math.floor(parseInt(b, 10) / 10000000)) {
             case 1:
@@ -94,11 +649,11 @@ SEARCH.util = {htmlspecialchars: function(a, b) {
                 break
         }
         return a
-    },template: function(a, b) {
+    }, template: function (a, b) {
         if (typeof b != "object") {
             return ""
         }
-        return a.replace(/{#(.*?)#}/g, function() {
+        return a.replace(/{#(.*?)#}/g, function () {
             var c = arguments[1];
             if ("undefined" != typeof (b[c]) && b[c] != null) {
                 return b[c]
@@ -106,7 +661,7 @@ SEARCH.util = {htmlspecialchars: function(a, b) {
                 return ""
             }
         })
-    },sGetScript: function(b, e, d) {
+    }, sGetScript: function (b, e, d) {
         e = e || "GBK";
         var a = document.createElement("script");
         a.type = "text/javascript";
@@ -117,9 +672,9 @@ SEARCH.util = {htmlspecialchars: function(a, b) {
         }
         var c = document.getElementsByTagName("head")[0];
         c.appendChild(a)
-    },bind_attr_href: function(a, b) {
+    }, bind_attr_href: function (a, b) {
         var d = this, c = typeof (MS.selected_attr) == "undefined" ? $("#select,#filter") : $("#filter");
-        c.unbind("click").bind("click", function(h) {
+        c.unbind("click").bind("click", function (h) {
             var f = $(h.target), g = f.attr("href");
             if (!g) {
                 f = f.parents("a");
@@ -130,12 +685,14 @@ SEARCH.util = {htmlspecialchars: function(a, b) {
                 return false
             }
         })
-    },setCookie: function(g, f, j) {
+    }, setCookie: function (g, f, j) {
         var i = j, h = new Date;
         h.setTime(h.getTime() + 24 * i * 60 * 60 * 1000);
         document.cookie = g + "=" + escape(f) + ";expires=" + h.toGMTString() + ";path=/;domain=." + pageConfig.FN_getDomain()
-    }};
-$.extend({scriptsArray: [],delayLoad: function(g, a, b, k, c) {
+    }
+};
+$.extend({
+    scriptsArray: [], delayLoad: function (g, a, b, k, c) {
         if (c !== undefined) {
             if ($(c).length == 0) {
                 return false
@@ -161,7 +718,7 @@ $.extend({scriptsArray: [],delayLoad: function(g, a, b, k, c) {
             e.rel = "stylesheet";
             e.href = a
         }
-        e.onload = e.onreadystatechange = function() {
+        e.onload = e.onreadystatechange = function () {
             if (!this.readyState || this.readyState === "loaded" || this.readyState === "complete") {
                 $.scriptsArray.push(a);
                 if (typeof (k) == "function") {
@@ -171,13 +728,14 @@ $.extend({scriptsArray: [],delayLoad: function(g, a, b, k, c) {
         };
         h.appendChild(e);
         return false
-    }});
-(function(k, l) {
+    }
+});
+(function (k, l) {
     k.QUERY_KEYWORD = l.util.html_chars_decode(k.QUERY_KEYWORD);
     k.REAL_KEYWORD = l.util.html_chars_decode(k.REAL_KEYWORD);
     //$("#key").val(k.QUERY_KEYWORD);
     if (typeof LogParm == "undefined") {
-        LogParm = {ab: 0,result_count: 0}
+        LogParm = {ab: 0, result_count: 0}
     }
     LogParm.rec_type = LogParm.rec_type || "0";
     LogParm.ev = LogParm.ev || 0;
@@ -194,7 +752,7 @@ $.extend({scriptsArray: [],delayLoad: function(g, a, b, k, c) {
         return false
     }
     var h = d.find("div.item"), g = d.find("a.more");
-    var a = function(m) {
+    var a = function (m) {
         for (var n = 10, j = h.length; n < j; n++) {
             if (!m) {
                 $(h[n]).hide()
@@ -203,7 +761,7 @@ $.extend({scriptsArray: [],delayLoad: function(g, a, b, k, c) {
             }
         }
     };
-    g.bind("click", function() {
+    g.bind("click", function () {
         if (!$(this).attr("s") || $(this).attr("s") == null || $(this).attr("s") == "1") {
             $(this).html("<span>收起</span><b class='close'></b>").attr({s: "0"});
             a(true)
@@ -212,8 +770,8 @@ $.extend({scriptsArray: [],delayLoad: function(g, a, b, k, c) {
             a(false)
         }
     });
-    d.find("h3").each(function() {
-        $(this).click(function() {
+    d.find("h3").each(function () {
+        $(this).click(function () {
             $(this).parent().toggleClass("hover").find(".show-more").toggleClass("hide")
         });
         var i = $(this).next("ul").children("li");
@@ -222,10 +780,10 @@ $.extend({scriptsArray: [],delayLoad: function(g, a, b, k, c) {
             i.css("display", "block")
         }
     });
-    d.find("h3 a").click(function(i) {
+    d.find("h3 a").click(function (i) {
         i.stopPropagation()
     });
-    d.find(".show-more a").click(function() {
+    d.find(".show-more a").click(function () {
         $(this).parent().prev().find("li").css("display", "block");
         $(this).parent().remove()
     });
@@ -240,9 +798,10 @@ $.extend({scriptsArray: [],delayLoad: function(g, a, b, k, c) {
     }
     l.cid_style()
 })(window, SEARCH);
-window.searchlog = function() {
-    var k = Array.prototype.slice.call(arguments, 0), a, m = k[0] == 0 ? QUERY_KEYWORD : window.REAL_KEYWORD || QUERY_KEYWORD;
-    var n = {sig: LogParm.sig,referer: document.referrer};
+window.searchlog = function () {
+    var k = Array.prototype.slice.call(arguments, 0), a,
+        m = k[0] == 0 ? QUERY_KEYWORD : window.REAL_KEYWORD || QUERY_KEYWORD;
+    var n = {sig: LogParm.sig, referer: document.referrer};
     if (k[0] == "e") {
         var g = encodeURIComponent(LogParm.ekey) + "^#psort#^#page#^#cid#^" + encodeURIComponent(window.location.href);
         k.shift();
@@ -322,13 +881,29 @@ window.searchlog = function() {
     } catch (h) {
     }
 };
-$(document).ready(function() {
-   // $("#key").val(QUERY_KEYWORD);
+$(document).ready(function () {
+    // $("#key").val(QUERY_KEYWORD);
     //searchlog(0, SEARCH.track_iframe_onebox())
 });
 GS = window.GS || {};
-GS.collocation = [{"爸爸": ["春节", "中秋", "新年", "生日"],"妈妈": ["春节", "中秋", "新年", "生日"],"丈夫": ["春节", "中秋", "新年", "情人节", "生日"],"妻子": ["春节", "中秋", "新年", "情人节", "生日"],"男朋友": ["春节", "中秋", "新年", "情人节", "生日"],"女朋友": ["春节", "中秋", "新年", "情人节", "生日"],"老人": ["春节", "中秋", "新年", "生日"],"小孩": ["春节", "中秋", "新年", "生日"],"领导": ["春节", "中秋", "新年", "生日"]}, {"春节": ["爸爸", "妈妈", "丈夫", "妻子", "男朋友", "女朋友", "老人", "小孩", "领导"],"中秋": ["爸爸", "妈妈", "丈夫", "妻子", "男朋友", "女朋友", "老人", "小孩", "领导"],"新年": ["爸爸", "妈妈", "丈夫", "妻子", "男朋友", "女朋友", "老人", "小孩", "领导"],"情人节": ["丈夫", "妻子", "男朋友", "女朋友"],"生日": ["爸爸", "妈妈", "丈夫", "妻子", "男朋友", "女朋友", "老人", "小孩", "领导"]}, ["春节", "中秋", "新年", "情人节", "生日"], ["爸爸", "妈妈", "丈夫", "妻子", "男朋友", "女朋友", "老人", "小孩", "领导"]];
-GS.init = function() {
+GS.collocation = [{
+    "爸爸": ["春节", "中秋", "新年", "生日"],
+    "妈妈": ["春节", "中秋", "新年", "生日"],
+    "丈夫": ["春节", "中秋", "新年", "情人节", "生日"],
+    "妻子": ["春节", "中秋", "新年", "情人节", "生日"],
+    "男朋友": ["春节", "中秋", "新年", "情人节", "生日"],
+    "女朋友": ["春节", "中秋", "新年", "情人节", "生日"],
+    "老人": ["春节", "中秋", "新年", "生日"],
+    "小孩": ["春节", "中秋", "新年", "生日"],
+    "领导": ["春节", "中秋", "新年", "生日"]
+}, {
+    "春节": ["爸爸", "妈妈", "丈夫", "妻子", "男朋友", "女朋友", "老人", "小孩", "领导"],
+    "中秋": ["爸爸", "妈妈", "丈夫", "妻子", "男朋友", "女朋友", "老人", "小孩", "领导"],
+    "新年": ["爸爸", "妈妈", "丈夫", "妻子", "男朋友", "女朋友", "老人", "小孩", "领导"],
+    "情人节": ["丈夫", "妻子", "男朋友", "女朋友"],
+    "生日": ["爸爸", "妈妈", "丈夫", "妻子", "男朋友", "女朋友", "老人", "小孩", "领导"]
+}, ["春节", "中秋", "新年", "情人节", "生日"], ["爸爸", "妈妈", "丈夫", "妻子", "男朋友", "女朋友", "老人", "小孩", "领导"]];
+GS.init = function () {
     this.obj = $("#dialogbox-gift").find("div.gift");
     if (this.obj.length == 0) {
         return false
@@ -343,22 +918,22 @@ GS.init = function() {
         c += '<div><a href="javascript:;" onclick="GS.click(this)" title="' + this.collocation[2][b] + '">' + this.collocation[2][b] + "</a></div>"
     }
     this.obj.find("dl:eq(1) dd").html(c);
-    this.obj.children("a").bind("mouseenter", function() {
+    this.obj.children("a").bind("mouseenter", function () {
         if (GS.delytime) {
             clearTimeout(GS.delytime)
         }
         $(this).parent().addClass("hover")
-    }).bind("mouseleave", function() {
-        GS.delytime = setTimeout(function() {
+    }).bind("mouseleave", function () {
+        GS.delytime = setTimeout(function () {
             GS.obj.removeClass("hover")
         }, 500)
-    }).next("div.prompt").bind("mouseenter", function() {
+    }).next("div.prompt").bind("mouseenter", function () {
         clearTimeout(GS.delytime)
-    }).bind("mouseleave", function() {
+    }).bind("mouseleave", function () {
         $(this).parent().removeClass("hover")
     })
 };
-GS.click = function(b) {
+GS.click = function (b) {
     var a = this.obj.find("dl").index($(b).parents("dl"));
     if ($(b).hasClass("curr")) {
         $(b).removeClass("curr");
@@ -368,7 +943,7 @@ GS.click = function(b) {
         this.html(this.collocation[a][$(b).html()], a)
     }
 };
-GS.html = function(a, c) {
+GS.html = function (a, c) {
     c = c === 0 ? 1 : 0;
     var e = "", g, h = this.obj.find("dl:eq(" + c + ")"), f = h.find("a.curr").html();
     for (var d = 0, b = a.length; d < b; d++) {
@@ -381,7 +956,7 @@ GS.html = function(a, c) {
     }
     h.find("dd").html(e)
 };
-GS.search = function() {
+GS.search = function () {
     var a, b = this.obj.find("dl:eq(0) a.curr").html(), c = this.obj.find("dl:eq(1) a.curr").html();
     if (b && c) {
         a = "送" + b + c + "礼物"
@@ -400,19 +975,20 @@ GS.search = function() {
     searchlog(1, 0, 0, 26);
     window.open("/Search?keyword=" + encodeURIComponent(a) + "&enc=utf-8")
 };
-SEARCH.iframe_click = {resolution: 200,iframes: [],interval: null,Iframe: function() {
+SEARCH.iframe_click = {
+    resolution: 200, iframes: [], interval: null, Iframe: function () {
         this.element = arguments[0];
         this.cb = arguments[1];
         this.hasTracked = false
-    },track: function(b, a) {
+    }, track: function (b, a) {
         this.iframes.push(new this.Iframe(b, a));
         if (!this.interval) {
             var c = this;
-            this.interval = setInterval(function() {
+            this.interval = setInterval(function () {
                 c.checkClick()
             }, this.resolution)
         }
-    },checkClick: function() {
+    }, checkClick: function () {
         if (document.activeElement) {
             var b = document.activeElement;
             for (var a in this.iframes) {
@@ -426,8 +1002,9 @@ SEARCH.iframe_click = {resolution: 200,iframes: [],interval: null,Iframe: functi
                 }
             }
         }
-    }};
-SEARCH.track_iframe_onebox = function() {
+    }
+};
+SEARCH.track_iframe_onebox = function () {
     var e = this, d = $("#virtualWareIFrame"), b = /^http\:\/\/(.*)\.(jd|360buy)\.com/i, a = "", c = d.attr("src");
     if (d.length && b.test(c)) {
         a = RegExp.$1;
@@ -438,18 +1015,25 @@ SEARCH.track_iframe_onebox = function() {
                 a = "waimai"
             }
         }
-        e.iframe_click.track(document.getElementById("virtualWareIFrame"), function() {
+        e.iframe_click.track(document.getElementById("virtualWareIFrame"), function () {
             searchlog(1, 0, 0, 59, a)
         })
     }
     return a
 };
-SEARCH.relate_search = {html: null,init: function() {
+SEARCH.relate_search = {
+    html: null, init: function () {
         if (this.html === null) {
             var a = QUERY_KEYWORD, b = this;
-            $.ajax({url: "http://qpsearch.jd.com/relationalSearch?keyword=" + encodeURIComponent(a).toLocaleLowerCase(),async: true,scriptCharset: "utf-8",dataType: "jsonp",success: function(c) {
+            $.ajax({
+                url: "http://qpsearch.jd.com/relationalSearch?keyword=" + encodeURIComponent(a).toLocaleLowerCase(),
+                async: true,
+                scriptCharset: "utf-8",
+                dataType: "jsonp",
+                success: function (c) {
                     b.callback(c)
-                }})
+                }
+            })
         } else {
             if (this.html == "") {
                 $("#dialogbox-gift").hide()
@@ -457,7 +1041,7 @@ SEARCH.relate_search = {html: null,init: function() {
                 $("#dialogbox-gift").append(this.html)
             }
         }
-    },callback: function(e) {
+    }, callback: function (e) {
         if ("string" == typeof (e) && e.length > 0) {
             var g = e.replace(/\*$/, "").split("*"), a = [];
             for (var f = 0, d = g.length; f < d; f++) {
@@ -478,16 +1062,22 @@ SEARCH.relate_search = {html: null,init: function() {
             $("#dialogbox-gift").hide();
             this.html = ""
         }
-    }};
-SEARCH.get_book_summary = {fragment: ['<div class="img"><img src="{img}" width="280" height="280" alt="" /></div><div class="text"><table cellpadding="0" cellspacing="0" border="0" width="100%">{detaile}</table></div>', '<div class="summary"><div class="i-summary"><div class="close" onclick="$(this).parent().parent().hide()"></div><div class="arrow"></div><div class="con"><div class="iloading">\u6b63\u5728\u52a0\u8f7d\u4e2d\uff0c\u8bf7\u7a0d\u5019...</div></div></div></div>', "<tr><td>{name}{value}</td></tr>"],dataUrl: "http://d.360buy.com/bookExt/get?skuId=",edataUrl: "http://e.jd.com/ebook/ExteBookService.aspx?stype=search&skuid=",setPosition: function(a) {
+    }
+};
+SEARCH.get_book_summary = {
+    fragment: ['<div class="img"><img src="{img}" width="280" height="280" alt="" /></div><div class="text"><table cellpadding="0" cellspacing="0" border="0" width="100%">{detaile}</table></div>', '<div class="summary"><div class="i-summary"><div class="close" onclick="$(this).parent().parent().hide()"></div><div class="arrow"></div><div class="con"><div class="iloading">\u6b63\u5728\u52a0\u8f7d\u4e2d\uff0c\u8bf7\u7a0d\u5019...</div></div></div></div>', "<tr><td>{name}{value}</td></tr>"],
+    dataUrl: "http://d.360buy.com/bookExt/get?skuId=",
+    edataUrl: "http://e.jd.com/ebook/ExteBookService.aspx?stype=search&skuid=",
+    setPosition: function (a) {
         var c = $(a.get(0)).position(), b = window.pageConfig.wideVersion ? 360 : 120;
         c.left > b && a.find(".summary").addClass("direct-left")
-    },init: function() {
+    },
+    init: function () {
         var a = this;
-        $("#plist").find("li.item-book").not('[done="1"]').each(function(b) {
+        $("#plist").find("li.item-book").not('[done="1"]').each(function (b) {
             this.setAttribute("done", "1");
             var c = $(this);
-            c.find("img").bind("mouseover", function() {
+            c.find("img").bind("mouseover", function () {
                 if ($("#plist").hasClass("plist-book")) {
                     return
                 }
@@ -503,7 +1093,7 @@ SEARCH.get_book_summary = {fragment: ['<div class="img"><img src="{img}" width="
                     var d = c.find(".con");
                     var f = (c.attr("e-tag") == "1");
                     var e = (!f ? a.dataUrl : a.edataUrl) + g + "&callback=?";
-                    $.getJSON(e, function(q) {
+                    $.getJSON(e, function (q) {
                         q = q || {};
                         if (!q.img) {
                             q.img = c.find("img").attr("src").replace("/n2/", "/n1/")
@@ -580,18 +1170,20 @@ SEARCH.get_book_summary = {fragment: ['<div class="img"><img src="{img}" width="
                         d.html(j)
                     })
                 }
-            }).bind("mouseout", function() {
+            }).bind("mouseout", function () {
                 c.css({"z-index": 0}).find(".summary").hide()
             })
         })
-    }};
-SEARCH.get_shop_info = function(b, a) {
+    }
+};
+SEARCH.get_shop_info = function (b, a) {
     if (b == "") {
         return
     } else {
         var c = this
     }
-    $.ajax({url: "shop.php",data: {shop_id: b},dataType: "json",success: function(e) {
+    $.ajax({
+        url: "shop.php", data: {shop_id: b}, dataType: "json", success: function (e) {
             if (typeof e != "object" || !e.name) {
                 return
             }
@@ -622,7 +1214,7 @@ SEARCH.get_shop_info = function(b, a) {
                 } else {
                     f.find(".shop-logo").html('<a href="' + e.url + '" title="' + e.title + '" target="_blank"></a>').show()
                 }
-                f.find(".shop-sname a:eq(0)").html(e.name).attr({title: e.title,href: e.url}).parent().show();
+                f.find(".shop-sname a:eq(0)").html(e.name).attr({title: e.title, href: e.url}).parent().show();
                 f.find(".phrase").html(e.brief).show();
                 var g = ((10 - e.full_score) * 10).toFixed(0);
                 f.find("dl.evaluate > dd").html('<span class="grade"><em style="left:-' + g + 'px"></em></span> ' + (Math.floor(10 * e.full_score) / 10).toFixed(1) + "分").attr("title", e.full_score + "分");
@@ -633,28 +1225,34 @@ SEARCH.get_shop_info = function(b, a) {
                 }
                 f.find("a.go-shop").attr("href", e.url)
             }
-            $("img[data-lazyload]").Jlazyload({type: "image",placeholderClass: "err-product"})
-        }})
+            $("img[data-lazyload]").Jlazyload({type: "image", placeholderClass: "err-product"})
+        }
+    })
 };
-SEARCH.get_multi_shops = function() {
+SEARCH.get_multi_shops = function () {
     var b = this, a = $("#plist-shop");
     if (!a.length) {
         return false
     }
-    a.find("div[shop-id]").not('[done="1"]').each(function() {
+    a.find("div[shop-id]").not('[done="1"]').each(function () {
         this.setAttribute("done", "1");
         b.get_shop_info(this.getAttribute("shop-id"), true)
     })
 };
-SEARCH.get_im_info = function(a, b) {
+SEARCH.get_im_info = function (a, b) {
     if (!a || !b) {
         return
     }
-    $.ajax({url: "http://chat1.jd.com/api/checkChat?venderList=" + b,dataType: "jsonp",jsonp: "callback",scriptCharset: "utf-8",success: function(m) {
+    $.ajax({
+        url: "http://chat1.jd.com/api/checkChat?venderList=" + b,
+        dataType: "jsonp",
+        jsonp: "callback",
+        scriptCharset: "utf-8",
+        success: function (m) {
             if (typeof (m) != "object") {
                 return
             }
-            var d = {}, e = $("#store-selector").find(".text").text(), f = function(u, t, i) {
+            var d = {}, e = $("#store-selector").find(".text").text(), f = function (u, t, i) {
                 var u = u == undefined ? "" : $.trim(u);
                 var j = u.match(t), i = i == undefined ? 1 : i;
                 return j === null ? "" : j[i]
@@ -696,16 +1294,17 @@ SEARCH.get_im_info = function(a, b) {
                 for (var p in g) {
                     c += p + "=" + encodeURI(encodeURI(g[p])) + "&"
                 }
-                q.find("a").html(q.find("a").html() + o).find("i").click((function(i) {
-                    return function() {
+                q.find("a").html(q.find("a").html() + o).find("i").click((function (i) {
+                    return function () {
                         window.open(i);
                         return false
                     }
                 })(c))
             }
-        }})
+        }
+    })
 };
-SEARCH.get_shop_name = function() {
+SEARCH.get_shop_name = function () {
     var e = this, c = $("#plist").find("div.service,div.shop-name").not('[done="1"]').filter("[shop_id]"), d = c.length;
     if (!d) {
         return false
@@ -714,7 +1313,7 @@ SEARCH.get_shop_name = function() {
         c[b].setAttribute("done", "1");
         a.push(c[b].getAttribute("shop_id"))
     }
-    $.getJSON("ShopName.php", {ids: a.unique().join(",")}, function(n) {
+    $.getJSON("ShopName.php", {ids: a.unique().join(",")}, function (n) {
         if (typeof n != "object") {
             return
         }
@@ -737,23 +1336,27 @@ SEARCH.get_shop_name = function() {
         e.get_im_info(c, g.unique().join(","))
     })
 };
-SEARCH.bind_events = {iplocation: (function(e, k) {
+SEARCH.bind_events = {
+    iplocation: (function (e, k) {
         var b = e("#store-selector");
         if (b.length == 0) {
-            return function() {
+            return function () {
             }
         }
         var n = '<div data-widget="tabs" class="m JD-stock" id="JD-stock"><div class="mt">    <ul class="tab">        <li data-index="0" data-widget="tab-item" class="curr"><a href="javascript:;" class="hover"><em>请选择</em><i></i></a></li>        <li data-index="1" data-widget="tab-item" style="display:none;"><a href="javascript:;" class=""><em>请选择</em><i></i></a></li>        <li data-index="2" data-widget="tab-item" style="display:none;"><a href="javascript:;" class=""><em>请选择</em><i></i></a></li>        <li data-index="3" data-widget="tab-item" style="display:none;"><a href="javascript:;" class=""><em>请选择</em><i></i></a></li>    </ul>    <div class="stock-line"></div></div><div class="mc" data-area="0" data-widget="tab-content">    <ul class="area-list">       <li><a href="javascript:;" data-value="1">北京</a></li><li><a href="javascript:;" data-value="2">上海</a></li><li><a href="javascript:;" data-value="3">天津</a></li><li><a href="javascript:;" data-value="4">重庆</a></li><li><a href="javascript:;" data-value="5">河北</a></li><li><a href="javascript:;" data-value="6">山西</a></li><li><a href="javascript:;" data-value="7">河南</a></li><li><a href="javascript:;" data-value="8">辽宁</a></li><li><a href="javascript:;" data-value="9">吉林</a></li><li><a href="javascript:;" data-value="10">黑龙江</a></li><li><a href="javascript:;" data-value="11">内蒙古</a></li><li><a href="javascript:;" data-value="12">江苏</a></li><li><a href="javascript:;" data-value="13">山东</a></li><li><a href="javascript:;" data-value="14">安徽</a></li><li><a href="javascript:;" data-value="15">浙江</a></li><li><a href="javascript:;" data-value="16">福建</a></li><li><a href="javascript:;" data-value="17">湖北</a></li><li><a href="javascript:;" data-value="18">湖南</a></li><li><a href="javascript:;" data-value="19">广东</a></li><li><a href="javascript:;" data-value="20">广西</a></li><li><a href="javascript:;" data-value="21">江西</a></li><li><a href="javascript:;" data-value="22">四川</a></li><li><a href="javascript:;" data-value="23">海南</a></li><li><a href="javascript:;" data-value="24">贵州</a></li><li><a href="javascript:;" data-value="25">云南</a></li><li><a href="javascript:;" data-value="26">西藏</a></li><li><a href="javascript:;" data-value="27">陕西</a></li><li><a href="javascript:;" data-value="28">甘肃</a></li><li><a href="javascript:;" data-value="29">青海</a></li><li><a href="javascript:;" data-value="30">宁夏</a></li><li><a href="javascript:;" data-value="31">新疆</a></li><li><a href="javascript:;" data-value="32">台湾</a></li><li><a href="javascript:;" data-value="42">香港</a></li><li><a href="javascript:;" data-value="43">澳门</a></li><li><a href="javascript:;" data-value="84">钓鱼岛</a></li>    </ul></div><div class="mc" data-area="1" data-widget="tab-content"></div><div class="mc" data-area="2" data-widget="tab-content"></div><div class="mc" data-area="3" data-widget="tab-content"></div></div><span class="clr"></span>';
         b.children(".content").html(n);
         var g = b.find("li[data-widget]"), d = b.find('div[data-widget="tab-content"]'), h = 3, c = [], f = true, i;
+
         function j(q) {
             var p = c[q], o = c[q - 1] || 0;
             return k.json_city[o][p] || ""
         }
+
         function a(o) {
             e(d[o - 1]).hide();
             e(d[o]).html('<div class="iloading">正在加载中，请稍候...</div>').show()
         }
+
         function m(r, o, p, q) {
             if (!o) {
                 return
@@ -764,7 +1367,7 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
             } else {
                 if (r < h) {
                     a(r);
-                    k.getAreaList_callback = function(v) {
+                    k.getAreaList_callback = function (v) {
                         if (!v) {
                             return
                         }
@@ -781,6 +1384,7 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
                 }
             }
         }
+
         function l(y, o, A, C) {
             if (!C && (!i[o] || "0" == i[o])) {
                 for (var v in y) {
@@ -843,14 +1447,15 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
                 A()
             }
         }
-        return function() {
+
+        return function () {
             b = e("#store-selector");
             b.children(".content").html(n);
             g = b.find("li[data-widget]");
             d = b.find('div[data-widget="tab-content"]');
             c = [];
             f = true;
-            d.click(function(q) {
+            d.click(function (q) {
                 f = false;
                 var p = e(q.srcElement || q.target), o = parseInt(p.attr("data-value"), 10);
                 if (!o) {
@@ -859,7 +1464,7 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
                 m(parseInt(p.parent().parent().parent().attr("data-area")) + 1, o, "", 1);
                 return false
             });
-            g.click(function(q) {
+            g.click(function (q) {
                 f = false;
                 var p = e(this), r = parseInt(p.attr("data-index"));
                 if (r >= h - 1) {
@@ -877,45 +1482,45 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
             if (!i[0] || !k.json_city[0][i[0]]) {
                 i = ["1"]
             }
-            m(1, i[0], (function() {
-                var o = 1, p = function() {
+            m(1, i[0], (function () {
+                var o = 1, p = function () {
                     o++;
                     m(o, i[o - 1], p)
                 };
                 return p
             })());
-            b.mouseover(function() {
+            b.mouseover(function () {
                 b.addClass("hover")
-            }).mouseout(function() {
+            }).mouseout(function () {
                 if (f) {
                     b.removeClass("hover")
                 }
             })
         }
-    })($, window),box_search: function() {
+    })($, window), box_search: function () {
         var a = $("#box-search");
         if (!a.length) {
             return
         }
-        $.get("hub.php?keyword=" + encodeURIComponent(QUERY_KEYWORD) + "&enc=utf-8", function(b) {
+        $.get("hub.php?keyword=" + encodeURIComponent(QUERY_KEYWORD) + "&enc=utf-8", function (b) {
             if (!b) {
                 return
             }
             $("#virtualWareIFrame").hide();
             a.after(b).remove();
-            $("#complex-onebox").each(function() {
+            $("#complex-onebox").each(function () {
                 var c = $(this);
-                c.Jtab({compatible: true}, function() {
+                c.Jtab({compatible: true}, function () {
                     c.find("div.extra").find("a").hide().eq(arguments[2]).show()
                 })
             })
         })
-    },baby_info: function() {
+    }, baby_info: function () {
         if ($("#babyQueryAttr").length == 1) {
             $.delayLoad(false, "http://misc.360buyimg.com/201007/skin/df/cal.css");
             $.delayLoad(true, "http://misc.360buyimg.com/product/js/2013/jQuery.Jcal.min.js", "gbk", SEARCH.get_baby_info)
         }
-    },brandFolded: function() {
+    }, brandFolded: function () {
         if ($.browser.isIE6) {
             $("#select").find(".attr").eq(0).css("border-top", "none")
         }
@@ -923,16 +1528,19 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
         if (!g.length) {
             return
         }
-        var j = $("#brand-search"), h = g.find("div.tabcon"), i = h.children("div"), c = h.hasClass("show-logo"), b = window.pageConfig.wideVersion ? c ? 14 : 15 : c ? 10 : 12, l = g.find("ul.tab"), f = "可搜索拼音、汉字查找品牌", d = false, e;
+        var j = $("#brand-search"), h = g.find("div.tabcon"), i = h.children("div"), c = h.hasClass("show-logo"),
+            b = window.pageConfig.wideVersion ? c ? 14 : 15 : c ? 10 : 12, l = g.find("ul.tab"), f = "可搜索拼音、汉字查找品牌",
+            d = false, e;
         i.slice(b).css("display", "none");
-        c && i.mouseover(function() {
+        c && i.mouseover(function () {
             $(this).addClass("hover")
-        }).mouseout(function() {
+        }).mouseout(function () {
             $(this).removeClass("hover")
         });
         if (i.length <= b) {
             return
         }
+
         function k(o, n) {
             o.addClass("curr").siblings().removeClass("curr");
             j.val(f);
@@ -943,8 +1551,9 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
                 i.css("display", "none").filter("[rel='" + n + "']").css("display", "block")
             }
         }
+
         var a, m = window.SEARCH;
-        l.mouseover(function(o) {
+        l.mouseover(function (o) {
             var n = $(o.target).attr("rel");
             if (n == undefined || e) {
                 return
@@ -952,19 +1561,19 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
             if (a) {
                 clearTimeout(a)
             }
-            a = setTimeout(function() {
+            a = setTimeout(function () {
                 k($(o.target), n)
             }, 150)
-        }).mouseout(function(n) {
+        }).mouseout(function (n) {
             a && clearTimeout(a)
-        }).click(function(o) {
+        }).click(function (o) {
             var n = $(o.target).attr("rel");
             if (n == undefined) {
                 return
             }
             k($(o.target), n)
         });
-        g.find("span.o-more").click(function() {
+        g.find("span.o-more").click(function () {
             if (!d) {
                 h.removeClass().addClass(c ? "tabcon tabcon-multi show-logo height185" : "tabcon tabcon-multi");
                 j.parent().removeClass("hide");
@@ -979,7 +1588,7 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
             }
             d = !d
         });
-        window.brand_search_result = function(p) {
+        window.brand_search_result = function (p) {
             if (typeof p != "object") {
                 return
             }
@@ -990,7 +1599,7 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
                 }
             }
         };
-        j.val(f).click(function() {
+        j.val(f).click(function () {
             if (this.value == f) {
                 this.value = "";
                 var n = l.find(".curr");
@@ -1001,11 +1610,11 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
                 }
             }
             searchlog(1, 0, 0, 49)
-        }).blur(function() {
+        }).blur(function () {
             if (this.value == "") {
                 this.value = f
             }
-        }).keyup(function(o) {
+        }).keyup(function (o) {
             if (o.keyCode == 13) {
                 var n = h.find("div:visible");
                 if (n.length == 1) {
@@ -1024,11 +1633,11 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
             }
             e = p
         })
-    },handle_more_multi: function(f) {
+    }, handle_more_multi: function (f) {
         var a = $("div.prop-attrs[done!=1]:visible").not("#babyQueryAttr");
-        a.each(function() {
+        a.each(function () {
             var h = $(this), j = h.find("li"), i = h.find("ul").width(), g = 0;
-            j.each(function() {
+            j.each(function () {
                 g += $(this).outerWidth(true)
             });
             i < g && h.find("span.o-more").removeClass("hide");
@@ -1050,8 +1659,8 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
                 }
             }
         }
-    },bind_more_multi: function() {
-        $("span.o-more").click(function(b) {
+    }, bind_more_multi: function () {
+        $("span.o-more").click(function (b) {
             var a = $(this);
             a.toggleClass("fold");
             a.parent().prev().toggleClass("v-unfold");
@@ -1064,7 +1673,7 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
                 searchlog(1, 0, 0, 50)
             }
         });
-        $("div.prop-attrs,div.color-attr").find("span.o-multiple").click(function(c) {
+        $("div.prop-attrs,div.color-attr").find("span.o-multiple").click(function (c) {
             $("#select").find("a.btn-gray:visible").not(".btn-price-range").click();
             var b = $(this), a = b.parents(".attr");
             b.parent().hide();
@@ -1073,7 +1682,7 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
                 searchlog(1, 0, 0, 24)
             }
         });
-        $("div.brand-attr span.o-multiple").click(function(c) {
+        $("div.brand-attr span.o-multiple").click(function (c) {
             $("#select").find("a.btn-gray:visible").not(".btn-price-range,.btn-submit,.tc-btn").click();
             var b = $(this), a = $("div.brand-attr");
             if (!a.find(".o-more").hasClass("fold")) {
@@ -1087,14 +1696,14 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
                 searchlog(1, 0, 0, 24)
             }
         });
-        $("a.btn-red").click(function() {
+        $("a.btn-red").click(function () {
             if (!$(this).hasClass("disabled")) {
                 searchlog(1, 0, 0, 25);
                 window.location.href = window.location.pathname + "?" + MS.submit_url() + "#select"
             }
             return false
         });
-        $("a.btn-gray").not(".btn-price-range").click(function(b) {
+        $("a.btn-gray").not(".btn-price-range").click(function (b) {
             var a = $(this), c = a.parents(".attr-select");
             c.find("a.curr").removeClass("curr");
             c.find(".selected").removeClass("selected");
@@ -1113,24 +1722,24 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
             }
             return false
         })
-    },priceSelect: function() {
+    }, priceSelect: function () {
         var b = $("#select"), a = b.find("input.price-range");
         if (!a.length) {
             return
         }
-        a.keypress(function(d) {
+        a.keypress(function (d) {
             var c = d.keyCode || d.charCode;
             if (c && (c < 48 || c > 57) && c != 46 && c != 8 && c != 37 && c != 39) {
                 d.preventDefault()
             }
-        }).blur(function(g) {
+        }).blur(function (g) {
             var d = $(this), c = $.trim(d.val()), f = new RegExp("^[0-9]+(.[0-9]{2})?$", "g");
             if (!f.test(c)) {
                 d.val("")
             }
             g.stopPropagation()
         });
-        b.find("a.btn-price-range").click(function() {
+        b.find("a.btn-price-range").click(function () {
             var f = a.eq(0).val(), c = a.eq(1).val(), d = $(this).attr("url");
             f = parseInt(f, 10);
             c = parseInt(c, 10);
@@ -1157,7 +1766,7 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
             }
             window.location.href = SEARCH.util.filtUrl(d, "psort", SEARCH.psort)
         })
-    },viewTypeSelect: function() {
+    }, viewTypeSelect: function () {
         var a = window.SEARCH;
         a.view_type = 2;
         if ($("#grid-unselected").hasClass("grid-curr")) {
@@ -1167,22 +1776,23 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
                 a.view_type = 3
             }
         }
-        $("#list-unselected").click(function() {
+        $("#list-unselected").click(function () {
             $(this).addClass("list-curr");
             $("#grid-unselected").removeClass("grid-curr").addClass("grid-unselected");
             $("#plist").addClass("plist-book");
             a.view_type = 1;
             a.util.bind_attr_href("vt", 1)
         });
-        $("#grid-unselected").click(function() {
+        $("#grid-unselected").click(function () {
             $(this).addClass("grid-curr");
             $("#list-unselected").removeClass("list-curr").addClass("list-unselected");
             $("#plist").removeClass("plist-book");
             a.view_type = 2;
             a.util.bind_attr_href("vt", 2)
         })
-    },reSearch: function() {
+    }, reSearch: function () {
         var d = $("#text-stock-search"), c = $("#btn-stock-search"), a = "在结果中搜索";
+
         function b() {
             if ($.trim(d.val()) != "" && $.trim(d.val()) != a) {
                 searchlog(1, 0, 0, 27);
@@ -1190,29 +1800,31 @@ SEARCH.bind_events = {iplocation: (function(e, k) {
                 return false
             }
         }
-        d.focus(function() {
+
+        d.focus(function () {
             if ($.trim(d.val()) == a) {
                 d.val("")
             }
-        }).blur(function() {
+        }).blur(function () {
             if ($.trim(d.val()) == "") {
                 d.val(a)
             }
-        }).keydown(function(f) {
+        }).keydown(function (f) {
             if (f.keyCode == 13) {
                 b()
             }
         });
-        c.click(function() {
+        c.click(function () {
             b()
         })
-    },init: function() {
+    }, init: function () {
         for (var a in this) {
             a != "init" && this[a]()
         }
         GS.init()
-    }};
-SEARCH.top_page_html = function(d, e, g, b) {
+    }
+};
+SEARCH.top_page_html = function (d, e, g, b) {
     if (b) {
         this.page_num = d;
         d = Math.ceil(d / 2);
@@ -1235,7 +1847,7 @@ SEARCH.top_page_html = function(d, e, g, b) {
     $("#top_pagi").html(c);
     $("#res_count").html(g)
 };
-SEARCH.bottom_page_html = function(e, k, j) {
+SEARCH.bottom_page_html = function (e, k, j) {
     if (j) {
         this.page_num = e;
         e = Math.ceil(e / 2);
@@ -1281,18 +1893,18 @@ SEARCH.bottom_page_html = function(e, k, j) {
     f += '<span class="page-skip"><em>&nbsp;&nbsp;共' + k + '页&nbsp;&nbsp;&nbsp;&nbsp;到第</em><input class="jumpto" type="text" value="' + e + '" onkeydown="javascript:if(event.keyCode==13){SEARCH.page_jump(' + k + "," + j + ');return false;}"/><em>页</em><a class="btn-skipsearch" value="确定" onclick="SEARCH.page_jump(' + k + "," + j + ')" href="javascript:;">确定</a></span>';
     $("#pagin-btm").html(f)
 };
-SEARCH.page = function(b, a) {
+SEARCH.page = function (b, a) {
     b = parseInt(b, 10);
     if (b < 1) {
         b = 1
     }
-    window.location = "http://localhost:8085/search.html?q="+SEARCH.query+"&page="+b;
+    window.location = "http://localhost:8085/search.html?q=" + SEARCH.query + "&page=" + b;
 //    if (a) {
 //        window.scrollTo(0, $("#filter").offset().top)
 //    }
-   // searchlog(1, b, 0, 56)
+    // searchlog(1, b, 0, 56)
 };
-SEARCH.page_jump = function(b, a) {
+SEARCH.page_jump = function (b, a) {
     var c = parseInt($("#pagin-btm .jumpto").val(), 10);
     if (isNaN(c)) {
         c = 1
@@ -1302,12 +1914,13 @@ SEARCH.page_jump = function(b, a) {
     }
     return a ? this.page(2 * c - 1, true) : this.page(c, true), false
 };
-SEARCH.sort_html = function(c) {
+SEARCH.sort_html = function (c) {
     c = c || "";
     if (c == "0") {
         c = ""
     }
-    var b = "<dt>排序：</dt>", a = '<dd class="#class#"><a href="javascript:;" onclick="#click#">#name#</a><b></b></dd>', d = class_name = "";
+    var b = "<dt>排序：</dt>", a = '<dd class="#class#"><a href="javascript:;" onclick="#click#">#name#</a><b></b></dd>',
+        d = class_name = "";
     if (c == "") {
         class_name = "curr"
     } else {
@@ -1360,7 +1973,7 @@ SEARCH.sort_html = function(c) {
     }
     $("#filter").find("dl.order").html(b)
 };
-SEARCH.sort = function(a) {
+SEARCH.sort = function (a) {
     a = a || "";
     if (a == "0") {
         a = ""
@@ -1369,13 +1982,15 @@ SEARCH.sort = function(a) {
     searchlog(1, a, 0, 55);
     this.util.bind_attr_href("psort", a)
 };
-SEARCH.scroll = function() {
-    var e = this.page_num + 1, d = $("#plist").find("ul.list-h").attr("tpl") + ($("#plist").hasClass("plist-n8") ? "_L" : "_M"), b = $("#scroll_loading"), f = b.attr("data-start"), a = b.attr("data-log-id");
+SEARCH.scroll = function () {
+    var e = this.page_num + 1,
+        d = $("#plist").find("ul.list-h").attr("tpl") + ($("#plist").hasClass("plist-n8") ? "_L" : "_M"),
+        b = $("#scroll_loading"), f = b.attr("data-start"), a = b.attr("data-log-id");
     var c = "s.php?" + this.base_url + "&psort=" + this.psort + "&page=" + e + "&scrolling=y&start=" + f + "&log_id=" + a + "&tpl=" + d;
     this.load(c, true);
     searchlog(1, e, 0, 56)
 };
-SEARCH.load = function(b, a) {
+SEARCH.load = function (b, a) {
     if (this.loading) {
         return false
     } else {
@@ -1390,13 +2005,14 @@ SEARCH.load = function(b, a) {
         b = f.util.filtUrl(b, "cs");
         b = f.util.filtUrl(b, "vt", f.view_type)
     }
-    $.ajax({url: b.replace(/[\s&]*$/g, ""),timeout: 10000,error: function() {
+    $.ajax({
+        url: b.replace(/[\s&]*$/g, ""), timeout: 10000, error: function () {
             if (c == 1) {
                 $("#scroll_loading").find("div").html('<b></b>加载失败，请<a href="javascript:void(0)" onclick="SEARCH.load(\'' + b + '\', true)"><font color="blue">重试</font></a>')
             } else {
                 $("#search_loading").find("div").css("background", "none").html("加载失败，请<a href=\"javascript:void(0)\" onclick=\"$('#search_loading').remove();SEARCH.load('" + b + '\', false);"><font color="blue">重试</font></a>')
             }
-        },beforeSend: function() {
+        }, beforeSend: function () {
             if (c == 1) {
                 $("#scroll_loading").find("div").html("<b></b>正在加载中，请稍候...").find("b").css("display", "block")
             } else {
@@ -1409,7 +2025,7 @@ SEARCH.load = function(b, a) {
                     $("#ad_left").html("").hide()
                 }
             }
-        },success: function(h) {
+        }, success: function (h) {
             if (c == 1) {
                 $("#scroll_loading").remove();
                 var g = $("#plist-shop").length ? $("#plist-shop") : e.find("ul.list-h");
@@ -1425,16 +2041,17 @@ SEARCH.load = function(b, a) {
                 }
             }
             f.success_js(c)
-        },complete: function() {
+        }, complete: function () {
             f.loading = false
-        }})
+        }
+    })
 };
-SEARCH.success_js = function(a) {
+SEARCH.success_js = function (a) {
     this.get_ware_info();
     this.get_multi_shops();
     this.image_scroll('#plist li:not([done="1"]) .p-scroll');
     pageConfig.FN_ImgError(document);
-    $("img[data-lazyload]").Jlazyload({type: "image",placeholderClass: "err-product"});
+    $("img[data-lazyload]").Jlazyload({type: "image", placeholderClass: "err-product"});
     pageConfig.isInitContrast = false;
     pageConfig.FN_InitContrast();
     $.delayLoad(true, "script/digital_music_download.js?100.js", "utf-8", "", 'li[e-tag!="1"] a.free-download');
@@ -1442,7 +2059,7 @@ SEARCH.success_js = function(a) {
 };
 MS = window.MS || {};
 MS.interval_time = 0;
-MS.get_last_attr = function(b) {
+MS.get_last_attr = function (b) {
     if (b) {
         var a = b.split("%40");
         return a[a.length - 2]
@@ -1450,7 +2067,7 @@ MS.get_last_attr = function(b) {
         return ""
     }
 };
-MS.attr_click = function(h, c) {
+MS.attr_click = function (h, c) {
     if ($(h).parents(".attr").hasClass("attr-select")) {
         var j = window.event || arguments.callee.caller.arguments[0];
         if (j.preventDefault) {
@@ -1476,7 +2093,7 @@ MS.attr_click = function(h, c) {
             this.selected_attr[0]--;
             k.removeClass(g);
             if (i.parent().attr("rel")) {
-                $("div.s-brands a").each(function() {
+                $("div.s-brands a").each(function () {
                     if ($(this).attr("title") == i.attr("title")) {
                         $(this).remove();
                         return false
@@ -1490,8 +2107,8 @@ MS.attr_click = function(h, c) {
                     return false
                 }
                 b.prependTo("body");
-                setTimeout(function() {
-                    b.animate({opacity: 0}, 500, function() {
+                setTimeout(function () {
+                    b.animate({opacity: 0}, 500, function () {
                         b.remove()
                     })
                 }, 2000);
@@ -1509,15 +2126,15 @@ MS.attr_click = function(h, c) {
         this.submit_style(l);
         var d = new Date().getTime();
         if (d - this.interval_time > 800) {
-            $.get("WareCount.php?" + this.submit_url(), (function(e) {
-                return function(o) {
+            $.get("WareCount.php?" + this.submit_url(), (function (e) {
+                return function (o) {
                     if (MS.LastModified > e || !o) {
                         return
                     }
                     MS.LastModified = e;
                     b.html("当前选择条件下，约有" + o + "个" + SEARCH.search_type).prependTo("body");
-                    setTimeout(function() {
-                        b.animate({opacity: 0}, 500, function() {
+                    setTimeout(function () {
+                        b.animate({opacity: 0}, 500, function () {
                             b.remove()
                         })
                     }, 2000)
@@ -1529,7 +2146,7 @@ MS.attr_click = function(h, c) {
         searchlog(1, 0, 0, 71, c)
     }
 };
-MS.selected_brand_click = function(c) {
+MS.selected_brand_click = function (c) {
     var b = $(c), a = b.attr("data");
     b.remove();
     this.selected_attr[0]--;
@@ -1537,7 +2154,7 @@ MS.selected_brand_click = function(c) {
     $("#" + b.attr("icon")).removeClass("selected");
     this.submit_style($("div.brand-attr"))
 };
-MS.submit_style = function(a) {
+MS.submit_style = function (a) {
     if (this.selected_attr[0]) {
         a.find("a.btn-red").removeClass("disabled")
     } else {
@@ -1547,7 +2164,7 @@ MS.submit_style = function(a) {
         }
     }
 };
-MS.submit_url = function() {
+MS.submit_url = function () {
     var e = "", d = "", c = window.SEARCH, b = c.util.filtUrl(c.base_url, "click");
     for (var a in this.selected_attr[1]) {
         if (this.selected_attr[1][a]) {
@@ -1564,12 +2181,34 @@ MS.submit_url = function() {
     b = c.util.filtUrl(b, "vt", c.view_type);
     return b
 };
-(function(a) {
-    a.fn.imgScroll = function(b, e) {
-        var d = {evtType: "click",visible: 1,direction: "x",next: "#next",prev: "#prev",disableClass: "disabled",disableClassPerfix: false,speed: 300,step: 1,showControl: false,width: null,height: null,navItems: false,navItmesWrapClass: "scroll-nav-wrap",navItemActivedClass: "current"};
+(function (a) {
+    a.fn.imgScroll = function (b, e) {
+        var d = {
+            evtType: "click",
+            visible: 1,
+            direction: "x",
+            next: "#next",
+            prev: "#prev",
+            disableClass: "disabled",
+            disableClassPerfix: false,
+            speed: 300,
+            step: 1,
+            showControl: false,
+            width: null,
+            height: null,
+            navItems: false,
+            navItmesWrapClass: "scroll-nav-wrap",
+            navItemActivedClass: "current"
+        };
         var c = a.extend(d, b);
-        return this.each(function() {
-            var s = a(this), v = s.find("ul").eq(0), f = v.find("li"), D = f.length, o = null, k = null, j = typeof c.next == "string" ? a(c.next) : c.next, h = typeof c.prev == "string" ? a(c.prev) : c.prev, y = 0, p = c.step, i = c.visible, G = Math.ceil((D - i) / p) + 1, x = c.direction, w = c.evtType, n = c.disableClass, E = c.disableClassPerfix ? "prev-" + n : n, F = c.disableClassPerfix ? "next-" + n : n, r = c.navItems, A = c.navItmesWrapClass, u = c.navItemActivedClass, t = false, q = true, C = (D - i) % p == 0;
+        return this.each(function () {
+            var s = a(this), v = s.find("ul").eq(0), f = v.find("li"), D = f.length, o = null, k = null,
+                j = typeof c.next == "string" ? a(c.next) : c.next, h = typeof c.prev == "string" ? a(c.prev) : c.prev,
+                y = 0, p = c.step, i = c.visible, G = Math.ceil((D - i) / p) + 1, x = c.direction, w = c.evtType,
+                n = c.disableClass, E = c.disableClassPerfix ? "prev-" + n : n,
+                F = c.disableClassPerfix ? "next-" + n : n, r = c.navItems, A = c.navItmesWrapClass,
+                u = c.navItemActivedClass, t = false, q = true, C = (D - i) % p == 0;
+
             function B(H) {
                 if (D >= p + i) {
                     h.addClass(E);
@@ -1582,9 +2221,21 @@ MS.submit_url = function() {
                 }
                 o = c.width || f.eq(0).outerWidth();
                 k = c.height || f.eq(0).outerHeight();
-                s.css({position: s.css("position") == "static" ? "relative" : s.css("position"),width: H == "x" ? o * i : o,height: H == "x" ? k : k * i,overflow: "hidden"});
-                v.css({position: "absolute",width: H == "x" ? o * D : o,height: H == "x" ? k : k * D,top: 0,left: 0})
+                s.css({
+                    position: s.css("position") == "static" ? "relative" : s.css("position"),
+                    width: H == "x" ? o * i : o,
+                    height: H == "x" ? k : k * i,
+                    overflow: "hidden"
+                });
+                v.css({
+                    position: "absolute",
+                    width: H == "x" ? o * D : o,
+                    height: H == "x" ? k : k * D,
+                    top: 0,
+                    left: 0
+                })
             }
+
             function m(H, I) {
                 if (v.is(":animated")) {
                     return false
@@ -1594,7 +2245,7 @@ MS.submit_url = function() {
                 } else {
                     H = I ? --y : ++y
                 }
-                v.animate(x == "x" ? {left: H >= (G - 1) ? -(D - i) * o : -H * p * o} : {top: H >= (G - 1) ? -(D - i) * k : -H * p * k}, b.speed, function() {
+                v.animate(x == "x" ? {left: H >= (G - 1) ? -(D - i) * o : -H * p * o} : {top: H >= (G - 1) ? -(D - i) * k : -H * p * k}, b.speed, function () {
                     if (D - H * p <= i) {
                         j.addClass(F);
                         t = true
@@ -1617,6 +2268,7 @@ MS.submit_url = function() {
                     }
                 })
             }
+
             function g(J, H) {
                 var J = a('<div class="' + J + '"></div>');
                 for (var I = 0; I < G; I++) {
@@ -1624,19 +2276,22 @@ MS.submit_url = function() {
                 }
                 s.after(J)
             }
+
             function z(H) {
                 if (a("." + A).length > 0) {
                     a("." + A).find("em").removeClass(u).eq(H).addClass(u)
                 }
             }
+
             function l() {
-                h.unbind(w).bind(w, function() {
+                h.unbind(w).bind(w, function () {
                     m(y, true)
                 });
-                j.unbind(w).bind(w, function() {
+                j.unbind(w).bind(w, function () {
                     m(y, false)
                 })
             }
+
             if (D > i && i >= p) {
                 B(x);
                 l();
@@ -1655,21 +2310,24 @@ MS.submit_url = function() {
         })
     }
 })(jQuery);
-SEARCH.image_scroll = function(a) {
+SEARCH.image_scroll = function (a) {
     var b = $("#plist").hasClass("plist-n2") ? "n2" : $("#plist").hasClass("plist-n8") ? "n8" : "n7";
-    $(a).each(function() {
-        var d = $(this).find(".p-scroll-wrap"), f = $(this).find(".p-scroll-prev"), e = $(this).find(".p-scroll-next"), c = $(this).find("li").length;
+    $(a).each(function () {
+        var d = $(this).find(".p-scroll-wrap"), f = $(this).find(".p-scroll-prev"), e = $(this).find(".p-scroll-next"),
+            c = $(this).find("li").length;
         if (c > 5) {
             f.css("display", "inline");
             e.css("display", "inline");
-            d.imgScroll({visible: 5,showControl: false,next: e,prev: f})
+            d.imgScroll({visible: 5, showControl: false, next: e, prev: f})
         }
-        d.find("img").each(function() {
-            $(this).mouseover(function() {
+        d.find("img").each(function () {
+            $(this).mouseover(function () {
                 var k = $(this).attr("src"), l = $(this).attr("data-skuid");
                 d.find("a").removeClass("curr");
                 $(this).parent("a").addClass("curr");
-                var j = $(this).parents("li").find(".p-img img").eq(0), i = $(this).parents("li").find(".p-img a").eq(0), h = $(this).parents("li").find(".p-name a").eq(0), g = $(this).parents("li").find(".product-follow a").eq(0);
+                var j = $(this).parents("li").find(".p-img img").eq(0),
+                    i = $(this).parents("li").find(".p-img a").eq(0), h = $(this).parents("li").find(".p-name a").eq(0),
+                    g = $(this).parents("li").find(".product-follow a").eq(0);
                 j.attr("src", k.replace(/\/n[95]\//, "/" + b + "/"));
                 i.attr("href", i.attr("href").replace(/\/\d{6,}/, "/" + l));
                 h.attr("href", h.attr("href").replace(/\/\d{6,}/, "/" + l));
@@ -1679,17 +2337,19 @@ SEARCH.image_scroll = function(a) {
             })
         })
     });
-    $("#plist.plist-" + b).not(".no-preview").find("ul.list-h>li").not('[done="1"]').hover(function() {
+    $("#plist.plist-" + b).not(".no-preview").find("ul.list-h>li").not('[done="1"]').hover(function () {
         $(this).addClass("hover").find(".product-follow,.shop-name").show();
         $(this).find(".item-wrap").addClass("item-hover")
-    }, function() {
+    }, function () {
         $(this).removeClass("hover").find(".item-wrap").removeClass("item-hover");
         $(this).find(".product-follow,.shop-name").hide()
     }).attr("done", "1")
 };
 window.surveyShowIndex = 0;
+
 function surveyShow() {
-    var a = $.delayLoad(false, "survey/css/surveyShowWindow.css"), b = $.delayLoad(true, "survey/js/surveyShowWindow.js?20140826.js", "utf-8");
+    var a = $.delayLoad(false, "survey/css/surveyShowWindow.css"),
+        b = $.delayLoad(true, "survey/js/surveyShowWindow.js?20140826.js", "utf-8");
     if (surveyShowIndex === 0 && a && b) {
         surveyWindowShow()
     } else {
@@ -1698,11 +2358,13 @@ function surveyShow() {
         }
     }
 }
+
 function ebook_download(b, a) {
-    $.login({modal: true,complete: function(c) {
+    $.login({
+        modal: true, complete: function (c) {
             if (c != null && c.IsAuthenticated != null && c.IsAuthenticated) {
                 var d = "http://gw.e.jd.com/downrecord/downrecord_insert.action?ebookId=" + b + "&key=" + a + "&callback=?";
-                $.getJSON(d, function(f) {
+                $.getJSON(d, function (f) {
                     if (f.code == 1) {
                         var e = confirm("如您已安装京东LeBook客户端，请点击“确定”自动启动客户端\n如您尚未安装京东LeBook客户端，请点击“取消”将引导您免费安装客户端");
                         if (e == true) {
@@ -1718,34 +2380,36 @@ function ebook_download(b, a) {
                     }
                 })
             }
-        }})
+        }
+    })
 }
-SEARCH.get_digital_price = function(b, a) {
-    $.getJSON("http://p.3.cn/prices/mgets?skuids=" + b + "&area=" + a.replace(/-/g, "_") + "&type=1&callback=?", function(c) {
+
+SEARCH.get_digital_price = function (b, a) {
+    $.getJSON("http://p.3.cn/prices/mgets?skuids=" + b + "&area=" + a.replace(/-/g, "_") + "&type=1&callback=?", function (c) {
         SEARCH.set_digital_price_data(c)
     })
 };
-SEARCH.get_ware_stock = function(b, a) {
-    $.getJSON("http://search.jd.com/stock?skus=" + b.replace(/J_/g, "") + "&district=" + a.split("-").slice(0, 3).join("_") + "&callback=?", function(c) {
+SEARCH.get_ware_stock = function (b, a) {
+    $.getJSON("http://search.jd.com/stock?skus=" + b.replace(/J_/g, "") + "&district=" + a.split("-").slice(0, 3).join("_") + "&callback=?", function (c) {
         SEARCH.set_ware_stock_data(c)
     })
 };
-SEARCH.get_prompt_adwords = function(a) {
-    $.getJSON("http://ad.3.cn/ads/mgets?skuids=" + a.replace(/J_/g, "AD_") + "&callback=?", function(b) {
+SEARCH.get_prompt_adwords = function (a) {
+    $.getJSON("http://ad.3.cn/ads/mgets?skuids=" + a.replace(/J_/g, "AD_") + "&callback=?", function (b) {
         SEARCH.set_prompt_adwords_data(b)
     })
 };
-SEARCH.get_prompt_flag = function(a) {
-    $.getJSON("http://pf.3.cn/flags/mgets?skuids=" + a + "&callback=?", function(b) {
+SEARCH.get_prompt_flag = function (a) {
+    $.getJSON("http://pf.3.cn/flags/mgets?skuids=" + a + "&callback=?", function (b) {
         SEARCH.set_prompt_flag_data(b)
     })
 };
-SEARCH.get_comment_nums = function(a, b) {
-    $.getJSON("http://club.jd.com/clubservice/summary-m-" + a.replace(/J_/g, "") + ".html?callback=?", function(c) {
+SEARCH.get_comment_nums = function (a, b) {
+    $.getJSON("http://club.jd.com/clubservice/summary-m-" + a.replace(/J_/g, "") + ".html?callback=?", function (c) {
         SEARCH.set_comment_nums_data(c, b)
     })
 };
-SEARCH.get_presale_info = function() {
+SEARCH.get_presale_info = function () {
     if (!window._enable_presale) {
         return false
     }
@@ -1756,10 +2420,10 @@ SEARCH.get_presale_info = function() {
     if (b.length == 0) {
         return false
     }
-    var f = d.find("ul.list-h").attr("tpl") == "1", e = false, a = function(h, g) {
+    var f = d.find("ul.list-h").attr("tpl") == "1", e = false, a = function (h, g) {
         h = h.toString();
         return h.length >= g ? h : a("0" + h, g)
-    }, c = function(j) {
+    }, c = function (j) {
         var h = Math.floor(j / 86400);
         j -= h * 86400;
         var g = Math.floor(j / 3600);
@@ -1771,13 +2435,13 @@ SEARCH.get_presale_info = function() {
         var i = a(j, 2);
         return h > 0 ? "剩余" + h + "天" + g + "时" + k + "分" : "剩余" + g + "时" + k + "分" + i + "秒"
     };
-    b.each(function() {
+    b.each(function () {
         this.setAttribute("p-done", "1");
         var h = $(this).parents("li"), g = h.attr("sku");
         if (!g) {
             return false
         }
-        $.getJSON("http://soa.yushou.jd.com/yushoulistinfo.action?sku=" + g + "&callback=?", function(o) {
+        $.getJSON("http://soa.yushou.jd.com/yushoulistinfo.action?sku=" + g + "&callback=?", function (o) {
             if (typeof (o) != "object" || o.type == "1" || !o.ret) {
                 return false
             }
@@ -1811,9 +2475,9 @@ SEARCH.get_presale_info = function() {
                 h.find("div.p-price").after(k)
             }
             if (f) {
-                h.addClass("prebuy-item").hover(function() {
+                h.addClass("prebuy-item").hover(function () {
                     h.addClass("hover")
-                }, function() {
+                }, function () {
                     h.removeClass("hover")
                 });
                 h.find("a[stock]").html("立即预定")
@@ -1821,9 +2485,9 @@ SEARCH.get_presale_info = function() {
             e = true
         })
     });
-    window._presale_interval = setInterval(function() {
+    window._presale_interval = setInterval(function () {
         if (e) {
-            d.find("div.prebuy-time").each(function() {
+            d.find("div.prebuy-time").each(function () {
                 var g = $(this).attr("time");
                 g = parseInt(g, 10) - 1;
                 if (g) {
@@ -1835,12 +2499,12 @@ SEARCH.get_presale_info = function() {
         }
     }, 1000)
 };
-SEARCH.digital_music_summmary = function() {
+SEARCH.digital_music_summmary = function () {
     if ($("#list-unselected").length < 1) {
         return false
     }
     var a = "";
-    $("#plist").find("div.p-summary").not('[done="1"]').each(function(b) {
+    $("#plist").find("div.p-summary").not('[done="1"]').each(function (b) {
         this.setAttribute("done", "1");
         var c = this.id.split("-")[1];
         if (c >= 60000000 && c < 70000000) {
@@ -1848,19 +2512,26 @@ SEARCH.digital_music_summmary = function() {
         }
     });
     if (a) {
-        $.ajax({url: "DigitalMusicSummary.php",cache: false,timeout: 5000,data: {ids: a},dataType: "json",success: function(c) {
+        $.ajax({
+            url: "DigitalMusicSummary.php",
+            cache: false,
+            timeout: 5000,
+            data: {ids: a},
+            dataType: "json",
+            success: function (c) {
                 if (!c) {
                     return
                 }
                 for (var b in c) {
                     c[b] && $("#summary-" + b).html(c[b])
                 }
-            }})
+            }
+        })
     }
 };
-SEARCH.get_ware_info = function() {
+SEARCH.get_ware_info = function () {
     var b = [], a = readCookie("ipLoc-djd") || "";
-    $("strong[class^='J_']").not('[done="1"]').each(function() {
+    $("strong[class^='J_']").not('[done="1"]').each(function () {
         this.setAttribute("done", "1");
         b.push(this.className)
     });
@@ -1875,7 +2546,7 @@ SEARCH.get_ware_info = function() {
     }
     this.get_shop_name(), this.digital_music_summmary(), this.get_book_summary.init(), this.get_presale_info()
 };
-SEARCH.set_digital_price_data = function(c) {
+SEARCH.set_digital_price_data = function (c) {
     if (typeof c == "object") {
         for (var b = 0, a = c.length, e = "", f = ""; b < a; b++) {
             if (c[b].p < 0) {
@@ -1894,7 +2565,7 @@ SEARCH.set_digital_price_data = function(c) {
         }
     }
 };
-SEARCH.set_prompt_flag_data = function(e) {
+SEARCH.set_prompt_flag_data = function (e) {
     if (!e || typeof e !== "object") {
         return
     }
@@ -1902,6 +2573,7 @@ SEARCH.set_prompt_flag_data = function(e) {
         var g = e[d], f = $("#p" + g.pid);
         f.prepend(b(g.pf, f.find("a").length))
     }
+
     function b(o, p) {
         if (!o || p == 2) {
             return
@@ -1940,7 +2612,7 @@ SEARCH.set_prompt_flag_data = function(e) {
         return m.join("")
     }
 };
-SEARCH.set_prompt_adwords_data = function(d) {
+SEARCH.set_prompt_adwords_data = function (d) {
     if (!d) {
         return
     }
@@ -1953,7 +2625,7 @@ SEARCH.set_prompt_adwords_data = function(d) {
         }
     }
 };
-SEARCH.set_comment_nums_data = function(e, d) {
+SEARCH.set_comment_nums_data = function (e, d) {
     if (typeof (e) != "object" || typeof (e.CommentsCount) != "object") {
         return false
     }
@@ -1972,11 +2644,12 @@ SEARCH.set_comment_nums_data = function(e, d) {
         }
     }
 };
-SEARCH.set_ware_stock_data = function(n) {
+SEARCH.set_ware_stock_data = function (n) {
     if (!n || typeof n != "object") {
         return
     }
-    var a = $("a[stock]"), k = readCookie("ipLoc-djd") || "", j = k.split("-"), e = j[0] ? window.json_city[0][j[0]] : "", g = [];
+    var a = $("a[stock]"), k = readCookie("ipLoc-djd") || "", j = k.split("-"),
+        e = j[0] ? window.json_city[0][j[0]] : "", g = [];
     for (var h = 0, c = a.length; h < c; h++) {
         var p = a.eq(h), o = p.attr("stock"), b = n[o], m = null, d = "btn btn-nostore notice-store";
         if (!b) {
@@ -1992,7 +2665,13 @@ SEARCH.set_ware_stock_data = function(n) {
                 if (p.attr("data-disable-notice") == "1") {
                     p.before('<a href="javascript:;" class="btn-buy disabled">加入购物车</a>').remove()
                 } else {
-                    p.attr({href: "javascript:;","class": d,"data-type": 2,"data-sku": o,id: "store" + o}).removeAttr("target").html("<b></b>到货通知");
+                    p.attr({
+                        href: "javascript:;",
+                        "class": d,
+                        "data-type": 2,
+                        "data-sku": o,
+                        id: "store" + o
+                    }).removeAttr("target").html("<b></b>到货通知");
                     var f = SEARCH.util.get_ware_type(o);
                     (f == "book" || f == "mvd") && g.push(o)
                 }
@@ -2010,7 +2689,7 @@ SEARCH.set_ware_stock_data = function(n) {
     if (!g.length) {
         return
     }
-    $.getJSON("WareStock.php?wids=" + g.join(","), function(q) {
+    $.getJSON("WareStock.php?wids=" + g.join(","), function (q) {
         if (typeof q != "object") {
             return
         }
@@ -2025,13 +2704,13 @@ SEARCH.apiArray[2] = ["prommTagValue", SEARCH.set_prompt_flag_data, SEARCH.get_p
 SEARCH.apiArray[4] = ["ADValue", SEARCH.set_prompt_adwords_data, SEARCH.get_prompt_adwords, false];
 SEARCH.apiArray[8] = ["summaryValue", SEARCH.set_comment_nums_data, SEARCH.get_comment_nums, false];
 SEARCH.apiArray[16] = ["stockValue", SEARCH.set_ware_stock_data, SEARCH.get_ware_stock, false];
-SEARCH.get_ware_info_merge = function(e, c) {
+SEARCH.get_ware_info_merge = function (e, c) {
     var b = e.replace(/J_/g, ""), f = this;
     for (var d = 1, a = f.apiArray.length - 1; d <= a; d = d * 2) {
         f.apiArray[d][3] = false
     }
     $.getJSONP("http://search.jd.com/mergesearch?skuids=" + b + "&apiType=1,2,4,8,16&area=" + c.split("-").slice(0, 3).join("_") + "&callback=SEARCH.jsonpcallback");
-    setTimeout(function() {
+    setTimeout(function () {
         for (var j = 1, h, g = f.apiArray.length - 1; j <= g; j = j * 2) {
             if (f.apiArray[j][3] == false) {
                 f.apiArray[j][3] = true;
@@ -2041,7 +2720,7 @@ SEARCH.get_ware_info_merge = function(e, c) {
         }
     }, 1500)
 };
-SEARCH.jsonpcallback = function(c, e) {
+SEARCH.jsonpcallback = function (c, e) {
     for (var d = 1, b, a = SEARCH.apiArray.length - 1; d <= a; d = d * 2) {
         if (SEARCH.apiArray[d][0] == c && e != undefined && SEARCH.apiArray[d][3] == false) {
             SEARCH.apiArray[d][3] = true;
@@ -2050,12 +2729,22 @@ SEARCH.jsonpcallback = function(c, e) {
         }
     }
 };
-SEARCH.get_baby_info = function() {
-    var j = $("#babyQueryAttr"), f, a = 0, c = "", h = "", i = j.find(".txt-birthday"), b = new Date(), e = window.SEARCH;
+SEARCH.get_baby_info = function () {
+    var j = $("#babyQueryAttr"), f, a = 0, c = "", h = "", i = j.find(".txt-birthday"), b = new Date(),
+        e = window.SEARCH;
     if (!i.attr("data-init")) {
-        i.Jcal({chosendate: (b.getMonth() + 1) + "/" + b.getDate() + "/" + b.getFullYear(),startdate: (b.getMonth() + 1) + "/" + b.getDate() + "/" + (b.getFullYear() - 14),enddate: (b.getMonth() + 1) + "/" + b.getDate() + "/" + (b.getFullYear() + 1),outputFormat: "{y}-{m}-{d}",zIndex: 10,x: 0,y: 0});
+        i.Jcal({
+            chosendate: (b.getMonth() + 1) + "/" + b.getDate() + "/" + b.getFullYear(),
+            startdate: (b.getMonth() + 1) + "/" + b.getDate() + "/" + (b.getFullYear() - 14),
+            enddate: (b.getMonth() + 1) + "/" + b.getDate() + "/" + (b.getFullYear() + 1),
+            outputFormat: "{y}-{m}-{d}",
+            zIndex: 10,
+            x: 0,
+            y: 0
+        });
         i.attr("data-init", "1")
     }
+
     function d(p) {
         var p = new Date(p * 1), l = {tip: ""}, o, n;
         o = p < b ? p : b;
@@ -2070,7 +2759,7 @@ SEARCH.get_baby_info = function() {
             r -= 1
         }
         if (!r && !k && !q) {
-            l = {tip: "即将出生",status: "now"}
+            l = {tip: "即将出生", status: "now"}
         } else {
             if (p < b) {
                 l.status = "past";
@@ -2109,15 +2798,20 @@ SEARCH.get_baby_info = function() {
                 }
             }
         }
-        j.find(".tc-info a").click(function() {
+        j.find(".tc-info a").click(function () {
             j.find(".query-con").removeClass("hide");
             j.find(".tips-con").addClass("hide")
         });
         $("#babyQueryAttr").removeClass("hide")
     }
+
     function g(l, k) {
         var m = l + "-" + c + "-" + h + "-" + k;
-        $.ajax({url: "http://uprofile.jd.com/u/baby/setinfo?babyinfo=" + m,async: true,dataType: "jsonp",success: function(o) {
+        $.ajax({
+            url: "http://uprofile.jd.com/u/baby/setinfo?babyinfo=" + m,
+            async: true,
+            dataType: "jsonp",
+            success: function (o) {
                 if (!o || o.flag != 2) {
                     alert("Joy,没记住您的选择...");
                     return
@@ -2129,9 +2823,12 @@ SEARCH.get_baby_info = function() {
                     var n = e.util.filtUrl(SEARCH.base_url, "bb_info", l + "-" + k);
                     window.location.href = window.location.pathname + "?" + n
                 }
-            }})
+            }
+        })
     }
-    $.ajax({url: "http://uprofile.jd.com/u/baby/getinfo?callback=?",async: true,dataType: "jsonp",success: function(l) {
+
+    $.ajax({
+        url: "http://uprofile.jd.com/u/baby/getinfo?callback=?", async: true, dataType: "jsonp", success: function (l) {
             var l = l.babyinfo.split("-");
             if (!l || !l[0]) {
                 j.removeClass("hide").find(".query-con").removeClass("hide");
@@ -2151,20 +2848,21 @@ SEARCH.get_baby_info = function() {
                 j.find(".query-con .girl").addClass("selected")
             }
             d(l[0])
-        }});
-    $("#for_my_bb").click(function() {
+        }
+    });
+    $("#for_my_bb").click(function () {
         var k = e.util.filtUrl(e.base_url, "bb_info", $(this).hasClass("tc-btn-selected") ? "" : f + "-" + a);
         window.location.href = window.location.pathname + "?" + k
     });
-    j.find(".boy").click(function() {
+    j.find(".boy").click(function () {
         $(this).addClass("selected");
         j.find(".girl").removeClass("selected")
     });
-    j.find(".girl").click(function() {
+    j.find(".girl").click(function () {
         $(this).addClass("selected");
         j.find(".boy").removeClass("selected")
     });
-    j.find(".btn-submit").click(function() {
+    j.find(".btn-submit").click(function () {
         var k = $.trim(j.find(".txt-birthday").val());
         if (!k) {
             alert("请选择宝宝出生日期");
@@ -2181,10 +2879,10 @@ SEARCH.get_baby_info = function() {
         if (j.find(".girl").hasClass("selected")) {
             a = 2
         }
-        jdModelCallCenter.settings.fn = function() {
+        jdModelCallCenter.settings.fn = function () {
             g(f, a)
         };
-        $.getJSON("http://passport.jd.com/loginservice.aspx?method=Login&callback=?", function(l) {
+        $.getJSON("http://passport.jd.com/loginservice.aspx?method=Login&callback=?", function (l) {
             if (l && l.Identity && l.Identity.IsAuthenticated) {
                 g(f, a)
             } else {
@@ -2194,12 +2892,17 @@ SEARCH.get_baby_info = function() {
         $(".Jcalendar").remove()
     })
 };
-SEARCH.get_paipai_ware = function(c) {
+SEARCH.get_paipai_ware = function (c) {
     if (!c) {
         return
     }
-    var d = this, b = encodeURIComponent(QUERY_KEYWORD), a = "http://se.paipai.com/comm_search?KeyWord=" + b + "&charSet=gbk&PTAG=12468." + c + ".6";
-    $.ajax({url: "http://sse1.paipai.com/comm_json?charset=utf-8&dtype=jsonp&dtag=search&KeyWord=" + b + "&PageSize=5&ShowClass=1",dataType: "jsonp",scriptCharset: "utf-8",success: function(h) {
+    var d = this, b = encodeURIComponent(QUERY_KEYWORD),
+        a = "http://se.paipai.com/comm_search?KeyWord=" + b + "&charSet=gbk&PTAG=12468." + c + ".6";
+    $.ajax({
+        url: "http://sse1.paipai.com/comm_json?charset=utf-8&dtype=jsonp&dtag=search&KeyWord=" + b + "&PageSize=5&ShowClass=1",
+        dataType: "jsonp",
+        scriptCharset: "utf-8",
+        success: function (h) {
             if (typeof (h) != "object" || h.retCode != "0" || h.data.list.length < 5) {
                 return
             }
@@ -2207,7 +2910,9 @@ SEARCH.get_paipai_ware = function(c) {
             g += '<div class="mc"><div class="paipai-showall"><strong>' + d.util.htmlspecialchars(QUERY_KEYWORD) + "</strong>";
             g += "共" + h.data.totalNum + '个商品<a target="_blank" href="' + a + '" onclick="log(\'paipai\',\'normal-clk-all\',QUERY_KEYWORD)">查看全部</a></div><ul class="lh">';
             for (var f = 0, e = h.data.list.length; f < e; f++) {
-                var m = h.data.list[f], n = d.util.strip_tags(m.title), l = m.link + (m.link.indexOf("?") > -1 ? "&" : "?") + "PTAG=12468." + c + "." + (f + 1), j = " onclick=\"log('paipai','normal-clk',QUERY_KEYWORD,'" + f + "', '" + m.link + "')\"";
+                var m = h.data.list[f], n = d.util.strip_tags(m.title),
+                    l = m.link + (m.link.indexOf("?") > -1 ? "&" : "?") + "PTAG=12468." + c + "." + (f + 1),
+                    j = " onclick=\"log('paipai','normal-clk',QUERY_KEYWORD,'" + f + "', '" + m.link + "')\"";
                 g += '<li><div class="p-img"><a target="_blank" title="' + n + '" href="' + l + '"' + j + '><img height="130" width="130" alt="" src="' + m.img160 + '"></a></div>';
                 g += '<div class="p-name"><a target="_blank" title="' + n + '" href="' + l + '"' + j + ">" + m.title.replace(/<em>(.+?)<\/em>/g, '<font class="skcolor_ljg">$1</font>') + "</a></div>";
                 g += '<div class="p-comm"><span class="star sa5"></span><br><a target="_blank" href="' + l + '#salesrecords"' + j + ">(销售数量" + m.saleNum + ")</a></div>";
@@ -2216,11 +2921,15 @@ SEARCH.get_paipai_ware = function(c) {
             g += "</ul></div></div>";
             $("#bottom_pager").after(g);
             log("paipai", "normal-show", QUERY_KEYWORD, h.data.totalNum, h.data.list.length, window.location.href)
-        }})
+        }
+    })
 };
-SEARCH.get_adv_info = function(f, d, c, b, e) {
+SEARCH.get_adv_info = function (f, d, c, b, e) {
     var g = this, a = encodeURIComponent(window.REAL_KEYWORD || window.QUERY_KEYWORD);
-    $.ajax({url: "http://x.jd.com/Search?ad_type=7&ad_ids=291:" + f + ",292:4&keyword=" + a + "&page=" + d + "&urlcid3=" + c,dataType: "jsonp",success: function(s) {
+    $.ajax({
+        url: "http://x.jd.com/Search?ad_type=7&ad_ids=291:" + f + ",292:4&keyword=" + a + "&page=" + d + "&urlcid3=" + c,
+        dataType: "jsonp",
+        success: function (s) {
             if (typeof (s) != "object" || !s["291"].length && !s["292"].length) {
                 $("#ad_left").html("").hide();
                 $("#shop-choice").html("").hide();
@@ -2269,25 +2978,32 @@ SEARCH.get_adv_info = function(f, d, c, b, e) {
                 $("#shop-choice").html("").hide()
             }
             pageConfig.FN_ImgError(document);
-            $("#ad_left,#shop-choice").find("img[data-lazyload]").Jlazyload({type: "image",placeholderClass: "err-product"});
+            $("#ad_left,#shop-choice").find("img[data-lazyload]").Jlazyload({
+                type: "image",
+                placeholderClass: "err-product"
+            });
             h.length && g.get_digital_price(h.join(","), readCookie("ipLoc-djd") || "");
             if (r.length) {
                 b != "" && g.get_comment_nums(r.join(","), true);
                 b == "_1" && $("#shop-choice").attr("class", "m plist-n7 plist-n2");
                 b == "_2" && $("#shop-choice").attr("class", "m plist-n7");
-                b == "" && $("#shop-choice").find("li").mouseover(function() {
+                b == "" && $("#shop-choice").find("li").mouseover(function () {
                     $(this).addClass("hover1")
-                }).mouseout(function() {
+                }).mouseout(function () {
                     $(this).removeClass("hover1")
                 })
             }
-        }})
+        }
+    })
 };
-SEARCH.init = function(page, total_page, result_count, sort, scroll, shop_id, cid, survey_html, paipai) {
+SEARCH.init = function (page, total_page, result_count, sort, scroll, shop_id, cid, survey_html, paipai) {
     this.get_ware_info(), this.get_shop_info(shop_id), this.get_multi_shops(), this.bind_events.init(), this.relate_search.init(), this.top_page_html(page, total_page, result_count, scroll), this.bottom_page_html(page, total_page, scroll), this.sort_html(sort), this.image_scroll('#plist li:not([done="1"]) .p-scroll');
     this.get_paipai_ware(paipai);
     $.delayLoad(true, "script/digital_music_download.js?100.js", "utf-8", "", 'li[e-tag!="1"] a.free-download');
-    $.ajax({url: "http://x.jd.com/ShowInterface?ad_ids=86:1,62:1," + (window.pageConfig.wideVersion ? 93 : 87) + ":1&urlcid3=" + cid + "&ad_type=8&spread_type=1",dataType: "jsonp",success: function(data) {
+    $.ajax({
+        url: "http://x.jd.com/ShowInterface?ad_ids=86:1,62:1," + (window.pageConfig.wideVersion ? 93 : 87) + ":1&urlcid3=" + cid + "&ad_type=8&spread_type=1",
+        dataType: "jsonp",
+        success: function (data) {
             if (typeof (data) != "object") {
                 return false
             }
@@ -2298,7 +3014,8 @@ SEARCH.init = function(page, total_page, result_count, sort, scroll, shop_id, ci
                     $("#xjd_left_" + i).html(data[i][0]).parent().parent().show()
                 }
             }
-        }});
+        }
+    });
     NotifyPop.init($(".notice-store"));
     pageConfig.isInitContrast = false;
     pageConfig.FN_InitContrast();
@@ -2306,14 +3023,16 @@ SEARCH.init = function(page, total_page, result_count, sort, scroll, shop_id, ci
     sidePanle.addItem(survey_html);
     sidePanle.setTop();
     sidePanle.scroll();
-    $("#sidepanel").find("a.gotop").attr("href", "javascript:void(0)").click(function() {
+    $("#sidepanel").find("a.gotop").attr("href", "javascript:void(0)").click(function () {
         window.scrollTo(0, 0)
     });
-    $.ajax({url: "http://guang.jd.com/init/",dataType: "jsonp",success: function(data) {
+    $.ajax({
+        url: "http://guang.jd.com/init/", dataType: "jsonp", success: function (data) {
             eval(data)
-        }})
+        }
+    })
 };
-$(document).keyup(function(d) {
+$(document).keyup(function (d) {
     var f = document.activeElement.tagName.toLowerCase();
     if (f == "input" || f == "textarea") {
         return
@@ -2336,16 +3055,16 @@ $(document).keyup(function(d) {
             break
     }
 });
-$(window).scroll(function() {
+$(window).scroll(function () {
     var a = $("#scroll_loading");
     if (SEARCH.loading || !SEARCH.page_num || a.length == 0 || a.offset().top - 450 > $(window).height() + $(window).scrollTop()) {
         return false
     }
     SEARCH.scroll()
 });
-(function(a, b) {
+(function (a, b) {
     if (typeof (b.is_correct_hash) == "function") {
-        $(a).hashchange(function() {
+        $(a).hashchange(function () {
             var c = b.get_real_hash() || a.location.search.substr(1);
             if (b.is_correct_hash(c)) {
                 b.load("s.php?" + c, false)
@@ -2353,8 +3072,8 @@ $(window).scroll(function() {
         })
     }
 })(window, SEARCH);
-(function() {
-    $("#J_oneboxTabs").find("div").click(function() {
+(function () {
+    $("#J_oneboxTabs").find("div").click(function () {
         if (!$(this).hasClass("selected")) {
             var a = $("#J_oneboxTabs").find("div").index(this);
             var b = $(".J_oneboxTabsContent").addClass("hide").eq(a).removeClass("hide").find(".J_oneBoxFrame");
@@ -2366,8 +3085,9 @@ $(window).scroll(function() {
         }
     })
 })();
-(function() {
-    var a = {insertScript: function(f, c) {
+(function () {
+    var a = {
+        insertScript: function (f, c) {
             var g = document.getElementsByTagName("head")[0];
             var e = document.createElement("script");
             e.setAttribute("type", "text/javascript");
@@ -2380,8 +3100,9 @@ $(window).scroll(function() {
             }
             e.setAttribute("src", f);
             g.appendChild(e)
-        },insertStyles: function(g) {
-            var h = document, f = h.getElementsByTagName("head"), d = h.createElement("style"), e = h.createElement("link");
+        }, insertStyles: function (g) {
+            var h = document, f = h.getElementsByTagName("head"), d = h.createElement("style"),
+                e = h.createElement("link");
             if (/\.css$/.test(g)) {
                 e.rel = "stylesheet";
                 e.type = "text/css";
@@ -2403,7 +3124,8 @@ $(window).scroll(function() {
                     f[0].appendChild(d)
                 }
             }
-        }};
+        }
+    };
     a.insertStyles("._gemini_inject_label_sousuo{display:block !important;} ._ads_sousuo,._no-ads_sousuo{display:none !important;}");
 //    var b = ["2_164_5467", "2_164_5470"];
 //    $.ajax({url: "http://nfa.jd.com/loadFa_toJson.js?aid=" + b.join("-") + "&ver=20140526",dataType: "script",cache: true,success: function() {
