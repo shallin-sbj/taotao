@@ -49,6 +49,6 @@
         <!--</constructor-arg>-->
     <!--</bean>-->
     <!--&lt;!&ndash; 集群版的实现类 &ndash;&gt;-->
-    <!--<bean id="jedisClientCluster" class="com.taotao.jedis.JedisClientCluster"/>-->
+    <!--<bean id="jedisClientCluster" class="com.taotao.JedisClientCluster"/>-->
 
 </beans>
